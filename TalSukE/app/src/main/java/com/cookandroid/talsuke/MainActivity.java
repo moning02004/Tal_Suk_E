@@ -59,4 +59,9 @@ public class MainActivity extends AppCompatActivity {
         };
         connection.execute(userInfo);
     }
+
+    void register(View v){
+        Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+        startActivity(intent);
+    }
 }
