@@ -8,30 +8,31 @@ import json
 
 @csrf_exempt
 def login(request):
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode('utf-8'))
     username = data['username']
-    if User.objects.all().filter(username=username).exists() and SukE.objects.all().filter(user=User.objects.get(username)).exists():
-        user = SukE.objects.get(user=User.objects.get(username))
-        if user.check_password(data['password']):
-            if user.is_superuser:
-                return JsonResponse({'permission': 'admin', 'message': 'Success'})
-            else:
-                return JsonResponse({'permission': 'user', 'message': 'Success'})
-    return JsonResponse({'message': 'Fail'})
+    
+    print(User.objects.all().filter(username=username).exists())
+
+    if User.objects.all().filter(username=username).exists() and SukE.objects.all().filter(user=User.objects.get(username=username)).exists():
+        suke = SukE.objects.get(user=User.objects.get(username=username))
+        if suke.user.check_password(data['password']):
+            return JsonResponse({'permission': 'user', 'message': 'Exist'})
+    return JsonResponse({'message':'Not Found'})
 
 
 @csrf_exempt
 def register(request):
-    data = json.loads(request.body)
+    data = json.loads(request.body.decode('utf-8'))
     username = data['username']
     password = data['password']
     name = data['name']
     address1 = data['address1']
     address2 = data['address2']
-
+    print(data)
     try:
         user = User.objects.create_user(username=username, password=password)
         user.save()
+        print(User.objects.all().filter(username=username).exists())
         suke = SukE()
         suke.user = user
         suke.name = name
