@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         userInfo.put("password", userpw.getText().toString());
 
         @SuppressLint("StaticFieldLeak")
-        JsonConnection connection = new JsonConnection(Constant.SIGN_IN_URL) {
+        JsonConnection connection = new JsonConnection(Constant.LOGIN_URL) {
             @Override
             protected void onPostExecute(JSONObject jsonObject) {
                 try {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         editor.apply();
                         Intent intent = new Intent();
                         if (jsonObject.getString("permission").equals("user")) {
-                            intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(intent);
                         }
                     } else {

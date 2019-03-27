@@ -46,7 +46,7 @@ public class JsonConnection extends AsyncTask<JSONObject, JSONObject, JSONObject
         return response;
     }
 
-    public JSONObject getResponse() throws JSONException, IOException {
+    private JSONObject getResponse() throws JSONException, IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String line = "";
         StringBuilder buffer = new StringBuilder();
