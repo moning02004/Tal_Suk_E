@@ -42,3 +42,9 @@ def register(request):
         return JsonResponse({'message': 'Success'})
     except:
         return JsonResponse({'message': 'Fail'})
+
+
+@csrf_exempt
+def check(request, pk):
+    message = 'Success' if not User.objects.all().filter(username=pk).exists() else 'Fail'
+    return JsonResponse({'message': message})
