@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     if (jsonObject == null) {
                         Toast.makeText(getApplicationContext(), "에러 발생", Toast.LENGTH_LONG).show();
                     } else if (jsonObject.getString("message").equals("Exist")) {
-                        SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences("    ", MODE_PRIVATE).edit();
                         editor.putString("username", username.getText().toString());
                         editor.apply();
                         Intent intent = new Intent();
