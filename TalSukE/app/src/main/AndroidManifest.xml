@@ -22,10 +22,10 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".activity_" />
-        <activity android:name=".HomeTestActivity" />
-        <activity android:name=".HomeTest2Activity" />
-        <activity android:name=".HomeTest3Activity" />
-        <activity android:name=".HomeTest4Activity"></activity>
+        <activity android:name=".HomeTurnActivity" />
+        <activity android:name=".HomeGraphActivity" />
+        <activity android:name=".HomeMainActivity" />
+        <activity android:name=".HomeSettingActivity"></activity>
     </application>
 
 </manifest>

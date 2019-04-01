@@ -9,7 +9,7 @@
     tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/mainButton"
         android:layout_width="96dp"
         android:layout_height="58dp"
         android:layout_alignParentStart="true"
@@ -24,15 +24,15 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/graphButton"
         android:layout_width="96dp"
         android:layout_height="58dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/textView4"
-        android:layout_toRightOf="@+id/textView4"
+        android:layout_toEndOf="@+id/mainButton"
+        android:layout_toRightOf="@+id/mainButton"
         android:background="@android:color/background_light"
         android:gravity="center_horizontal|center_vertical"
         android:text="통계"
@@ -41,7 +41,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/turnButton"
         android:layout_width="96dp"
         android:layout_height="58dp"
         android:layout_alignParentTop="true"
@@ -50,11 +50,11 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
-        android:layout_toStartOf="@+id/textView7"
-        android:layout_toLeftOf="@+id/textView7"
-        android:layout_toEndOf="@+id/textView5"
-        android:layout_toRightOf="@+id/textView5"
-        android:background="@android:color/darker_gray"
+        android:layout_toStartOf="@+id/settingButton"
+        android:layout_toLeftOf="@+id/settingButton"
+        android:layout_toEndOf="@+id/graphButton"
+        android:layout_toRightOf="@+id/graphButton"
+        android:background="@android:color/background_light"
         android:gravity="center_horizontal|center_vertical"
         android:text="탈수"
         android:textAllCaps="false"
@@ -62,7 +62,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/settingButton"
         android:layout_width="96dp"
         android:layout_height="58dp"
         android:layout_alignParentTop="true"
@@ -71,10 +71,11 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
-        android:background="@android:color/background_light"
+        android:background="@android:color/darker_gray"
         android:gravity="center_horizontal|center_vertical"
         android:text="설정"
         android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold" />
+
 </RelativeLayout>

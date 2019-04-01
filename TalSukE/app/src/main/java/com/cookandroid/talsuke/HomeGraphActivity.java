@@ -1,32 +1,26 @@
 package com.cookandroid.talsuke;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class HomeTest2Activity extends AppCompatActivity {
+public class HomeGraphActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_test2);
+        setContentView(R.layout.activity_home_graph);
         LineChart lineChart = (LineChart) findViewById(R.id.chart);
 
         ArrayList<Entry> entries = new ArrayList<>();
@@ -67,37 +61,37 @@ public class HomeTest2Activity extends AppCompatActivity {
         lineChart.animateY(5000);
 
 
-        TextView text1 = (TextView) findViewById(R.id.textView4);
-        text1.setOnClickListener(new View.OnClickListener() {
+        TextView turn = (TextView) findViewById(R.id.turnButton);
+        turn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeTestActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeTurnActivity.class);
                 startActivity(intent);
             }
         });
-        TextView text2 = (TextView) findViewById(R.id.textView5);
-        text2.setOnClickListener(new View.OnClickListener() {
+        TextView graph = (TextView) findViewById(R.id.graphButton);
+        graph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeTest2Activity.class);
-                startActivity(intent);
-            }
-        });
-
-        TextView text3 = (TextView)findViewById(R.id.textView6);
-        text3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeTest3Activity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeGraphActivity.class);
                 startActivity(intent);
             }
         });
 
-        TextView text4 = (TextView)findViewById(R.id.textView7);
-        text4.setOnClickListener(new View.OnClickListener() {
+        TextView main = (TextView)findViewById(R.id.mainButton);
+        main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeTest4Activity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView setting = (TextView)findViewById(R.id.settingButton);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeSettingActivity.class);
                 startActivity(intent);
             }
         });
