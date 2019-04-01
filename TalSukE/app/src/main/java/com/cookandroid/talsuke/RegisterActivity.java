@@ -1,6 +1,7 @@
 package com.cookandroid.talsuke;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -113,4 +114,5 @@ public class RegisterActivity extends AppCompatActivity {
     boolean validateUsername(){
         return check.getText().equals("사용가능합니다.");
     }
+
 }

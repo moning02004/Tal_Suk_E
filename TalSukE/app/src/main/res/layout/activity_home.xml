@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/colorPrimary"
     tools:context=".HomeActivity">
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_height="299dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/back_stat"
@@ -28,7 +28,7 @@
         android:layout_height="87dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="165dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="@drawable/round_text"
@@ -47,7 +47,7 @@
         android:layout_height="70dp"
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="70dp"
         android:layout_marginRight="70dp"
         android:background="@drawable/round_text"
@@ -65,7 +65,6 @@
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/round_button"
@@ -96,24 +95,6 @@
         app:layout_constraintTop_toBottomOf="@+id/home_stati" />
 
     <Button
-        android:id="@+id/home_setting"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/round_button"
-        android:gravity="center"
-        android:text="설정"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_dry" />
-
-    <Button
         android:id="@+id/button"
         android:layout_width="51dp"
         android:layout_height="54dp"
@@ -124,5 +105,13 @@
         android:onClick="refresh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="65dp"
+        android:layout_height="52dp"
+        app:srcCompat="@drawable/setting"
+        tools:layout_editor_absoluteX="314dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>

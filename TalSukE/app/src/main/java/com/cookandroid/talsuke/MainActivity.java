@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void register(View v){
-        Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+        Intent intent = new Intent(getApplicationContext(), HomeTestActivity.class);
         startActivity(intent);
     }
 }
