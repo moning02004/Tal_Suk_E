@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('address1', models.CharField(max_length=200)),
                 ('address2', models.CharField(max_length=200)),
                 ('name', models.CharField(max_length=100)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('app_user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

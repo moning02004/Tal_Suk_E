@@ -16,7 +16,7 @@ def login(request):
     if User.objects.all().filter(username=username).exists() and SukE.objects.all().filter(user=User.objects.get(username=username)).exists():
         suke = SukE.objects.get(user=User.objects.get(username=username))
         if suke.user.check_password(data['password']):
-            return JsonResponse({'permission': 'user', 'message': 'Exist'})
+            return JsonResponse({'permission': 'app_user', 'message': 'Exist'})
     return JsonResponse({'message':'Not Found'})
 
 
