@@ -22,10 +22,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".activity_" />
-        <activity android:name=".HomeTurnActivity" />
-        <activity android:name=".HomeGraphActivity" />
-        <activity android:name=".HomeMainActivity" />
-        <activity android:name=".HomeSettingActivity"></activity>
+        <activity android:name=".FragmentActivity"></activity>
     </application>
 
 </manifest>

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void temp(View v){
-        Intent intent = new Intent(getApplicationContext(), HomeMainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), FragmentActivity.class);
         startActivity(intent);
     }
 }
