@@ -59,13 +59,15 @@ public class MainActivity extends AppCompatActivity {
         connection.execute(userInfo);
     }
 
+    void temp(View v){
+        Intent intent = new Intent(getApplicationContext(), TabActivity.class);
+        startActivity(intent);
+    }
+
     void register(View v){
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(intent);
     }
 
-    void temp(View v){
-        Intent intent = new Intent(getApplicationContext(), FragmentActivity.class);
-        startActivity(intent);
-    }
+
 }
