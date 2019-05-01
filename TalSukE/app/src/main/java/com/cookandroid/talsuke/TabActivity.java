@@ -31,7 +31,6 @@ public class TabActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        MyTabs = (TabLayout)findViewById(R.id.MyTabs);
         MyPage = (ViewPager)findViewById(R.id.MyPage);
 
         MyTabs.setupWithViewPager(MyPage);

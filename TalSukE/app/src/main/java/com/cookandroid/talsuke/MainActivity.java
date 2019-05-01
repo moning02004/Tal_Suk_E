@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void temp(View v){
-        Intent intent = new Intent(getApplicationContext(), TabActivity.class);
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(intent);
     }
 
