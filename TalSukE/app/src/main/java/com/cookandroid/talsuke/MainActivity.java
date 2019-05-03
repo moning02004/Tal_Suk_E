@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.login_id);
         userpw = findViewById(R.id.login_pw);
         String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
-        System.out.println("AAAA" + username);
         if (username != null && !username.equals("")) {
             Toast.makeText(getApplicationContext(), getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "")+"님 환영합니다.", Toast.LENGTH_LONG).show();
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));

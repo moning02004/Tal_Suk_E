@@ -88,12 +88,15 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        System.out.println("AAAAAAAAA :::::: " + resultCode);
+
         if (resultCode == RESULT_CANCELED) {
             switch (requestCode){
                 case 1000:
-                    Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_LONG).show();
-                    finish();
+                    String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
+                    if (username != null && username.equals("")) {
+                        Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
                     break;
             }
         }
