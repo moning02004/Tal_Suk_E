@@ -2,10 +2,16 @@ package com.cookandroid.talsuke;
 
 import android.annotation.SuppressLint;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,9 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-    private TextView weight;
+    private Button weight;
     private TextView fee;
-    private TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,83 +31,71 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         setTitle("탈숙이");
 
-        weight = findViewById(R.id.home_weight);
-        fee = findViewById(R.id.home_fee);
-        result = findViewById(R.id.home_result);
     }
 
-    void refresh(View v){
-        JSONObject userInfo = new JSONObject();
-        try {
-            userInfo.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            @SuppressLint("StaticFieldLeak")
-            JsonConnection connection = new JsonConnection(Constant.REFRESH_URL) {
-                @Override
-                protected void onPostExecute(JSONObject jsonObject) {
-                    System.out.println(jsonObject);
-                    try {
-                        System.out.println(jsonObject.getJSONArray("year"));
-                        ArrayList<Items> items = new ArrayList<Items>() {};
-                        for (int y = 0; y < jsonObject.getJSONArray("year").length(); y++) {
-                            System.out.println(jsonObject.getJSONArray("year").get(y));
-                            JSONObject year = (JSONObject) jsonObject.getJSONArray("year").get(y);
-                            System.out.println(year.getString("num"));
-
-                            for (int m = 0; m < year.getJSONArray("month").length(); m++) {
-                                JSONObject month = (JSONObject) year.getJSONArray("month").get(m);
-                                System.out.println(month.getString("num"));
-
-                                for (int d = 0; d < month.getJSONArray("day").length(); d++) {
-                                    JSONObject day = (JSONObject) month.getJSONArray("day").get(d);
-                                    System.out.println(day.getString("num"));
-                                    Items item = new Items(
-                                            year.getString("num")+"년 "+month.getString("num")+"월 "+day.getString("num")+"일",
-                                            Integer.parseInt(day.getString("weight")),
-                                            Integer.parseInt(day.getString("fee")));
-                                    items.add(item);
-                                }
-                            }
-                        }
-                        for (int i=0; i<items.size(); i++) {
-                            System.out.println(items.get(i).getDate());
-                            result.setText(items.get(i).getDate());
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+    @Override
+    public void onBackPressed() {
+        System.out.println(getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        builder.setCancelable(true);
+        builder.setTitle("종료 확인");
+        builder.setMessage("종료하시겠어요?");
+        builder.setPositiveButton("Confirm",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
+                        System.out.println("AAAA" + username);
+                        finishAffinity();
                     }
-                }
-            };
-            connection.execute(userInfo);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
-    void save(View v){
-        JSONObject userInfo = new JSONObject();
-        try {
-            userInfo.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
-            userInfo.put("year", "2019");
-            userInfo.put("month", "4");
-            userInfo.put("day", "1");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            @SuppressLint("StaticFieldLeak")
-            JsonConnection connection = new JsonConnection(Constant.SAVE_URL){
-                @Override
-                protected void onPostExecute(JSONObject jsonObject) {
-                    System.out.println(jsonObject);
-                }
-            };
-            connection.execute(userInfo);
-        } catch (IOException e) {
-            e.printStackTrace();
+    void update(View v) {
+
+    }
+
+    void dehydration(View v) {
+
+    }
+
+    void me(View v) {
+        Intent intent = new Intent(getApplicationContext(), MeActivity.class);
+        startActivity(intent);
+    }
+
+    void local(View v) {
+        Intent intent = new Intent(getApplicationContext(), LocalActivity.class);
+        startActivity(intent);
+    }
+
+    void info(View v) {
+        Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+        startActivity(intent);
+    }
+
+    void setting(View v) {
+        Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+        startActivityForResult(intent, 1000);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        System.out.println("AAAAAAAAA :::::: " + resultCode);
+        if (resultCode == RESULT_CANCELED) {
+            switch (requestCode){
+                case 1000:
+                    Toast.makeText(getApplicationContext(), "로그아웃 되었습니다.", Toast.LENGTH_LONG).show();
+                    finish();
+                    break;
+            }
         }
     }
 }
