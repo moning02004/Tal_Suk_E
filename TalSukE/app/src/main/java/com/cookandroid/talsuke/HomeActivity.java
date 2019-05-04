@@ -22,8 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-    private Button weight;
-    private TextView fee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

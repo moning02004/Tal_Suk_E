@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
     void check(View v) throws IOException {
         if (username.getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(), "아이디를 입력하십시오.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "아이디를 입력하십시오.", Toast.LENGTH_SHORT).show();
             return;
         }
         JSONObject jsonObject = new JSONObject();
