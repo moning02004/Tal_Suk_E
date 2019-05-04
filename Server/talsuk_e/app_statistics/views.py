@@ -66,7 +66,7 @@ def local(request):
             stat_year['num'] = year.num
             stat_year['month'] = []
             for month in Month.objects.all().filter(year=year):
-                sum[month.num] = [0, 2] if not month.num in sum.keys() else [(sum[month.num])[0], (sum[month.num])[1]]
+                sum[month.num] = [0, 0] if not month.num in sum.keys() else [(sum[month.num])[0], (sum[month.num])[1]]
                 (sum[month.num])[0] += month.day_set.aggregate(sum=Sum('weight'))['sum']
                 (sum[month.num])[1] += month.day_set.aggregate(sum=Sum('fee'))['sum']
 
