@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from collections import OrderedDict
 
+from app_user.models import SukE
 from .models import Year, Month, Day
 import json
 
@@ -41,15 +42,44 @@ def me(request):
 
 
 @csrf_exempt
-def local(request):
-    return JsonResponse({})
+def local(request):    
+    data = json.loads((request.body).decode('utf-8'))
+    username = data['username']
+    print(username)
+    address1 = User.objects.get(username=username).suke.address1
+    address2 = User.objects.get(username=username).suke.address2
 
+    sum = dict()
+
+    suke_list = SukE.objects.all().filter(address1=address1, address2=address2)
+    local_stat = OrderedDict()
+    stat_year = OrderedDict()
+    stat_month = OrderedDict()
+
+    for suke in suke_list:
+        local_stat['year'] = []
+        for year in Year.objects.all().filter(user=suke.user):
+            stat_year['num'] = year.num
+            stat_year['month'] = []
+            for month in Month.objects.all().filter(year=year):
+                sum[month.num] = [0, 2] if not month.num in sum.keys() else [(sum[month.num])[0], (sum[month.num])[1]]
+                (sum[month.num])[0] += month.day_set.aggregate(sum=Sum('weight'))['sum']
+                (sum[month.num])[1] += month.day_set.aggregate(sum=Sum('fee'))['sum']
+
+    for key, value in sum.items():
+        print(key, value)
+        stat_month = OrderedDict()
+        stat_month['num'] = key
+        stat_month['weight'] = value[0]
+        stat_month['fee'] = value[1]
+        stat_year['month'].append(stat_month)
+    print(json.dumps(stat_year, ensure_ascii=False, indent='\t'))
+    return JsonResponse(stat_year, safe=False)
 
 @csrf_exempt
 def save(request):
     data = json.loads(request.body.decode('utf-8'))
     username = data['username']
-    print(data['username'])
     year = int(data['year'])
     month = int(data['month'])
     day = int(data['day'])
@@ -66,3 +96,4 @@ def save(request):
     new_day.weight = 450
     new_day.save()
     return JsonResponse({'message':'Success'})
+
