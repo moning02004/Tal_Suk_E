@@ -8,6 +8,7 @@ public class StatYear {
 
     public StatYear(String year){
         this.year = year;
+        this.monthList = new ArrayList<StatMonth>();
     }
 
     public String getYear() {return year;}

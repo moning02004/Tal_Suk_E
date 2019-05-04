@@ -3,7 +3,9 @@ package com.cookandroid.talsuke;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.cookandroid.talsuke.Adapter.ExpandAdapter;
 import com.cookandroid.talsuke.Model.StatDay;
@@ -35,9 +37,11 @@ public class MeActivity extends AppCompatActivity {
                 @Override
                 protected void onPostExecute(JSONObject jsonObject) {
                     System.out.println("AAAAAAAAAAAAFFFFFFFFFFFFFEEEEEEEEEEEEEWWWWWWWWWWWWWWWEEEEEEEEEEEEEEEEEFFFFFFFFFFFF" + jsonObject);
+                    if (jsonObject == null) {
+                        return;
+                    }
                     StatMonth month;
                     try {
-
                         JSONArray yearArray = jsonObject.getJSONArray("year");
                         for (int y = 0; y < yearArray.length(); y++) {
                             JSONObject year = (JSONObject) yearArray.get(y);
@@ -74,7 +78,5 @@ public class MeActivity extends AppCompatActivity {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 }
