@@ -29,11 +29,11 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
-        if(convertView == null){
-            convertView = myinf.inflate(this.groupLayout, parent, false);
-        }
+        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+            // TODO Auto-generated method stub
+            if(convertView == null){
+                convertView = myinf.inflate(this.groupLayout, parent, false);
+            }
 
         TextView day = convertView.findViewById(R.id.stat_mon_date);
         TextView weight = convertView.findViewById(R.id.stat_mon_weight);
