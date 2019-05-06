@@ -1,23 +1,31 @@
 package com.cookandroid.talsuke;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.cookandroid.talsuke.Adapter.InfoAdapter;
 import com.cookandroid.talsuke.Model.InfoItem;
+import com.cookandroid.talsuke.Model.StatMonth;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class InfoActivity extends AppCompatActivity implements View.OnClickListener{
+public class InfoActivity extends AppCompatActivity {
 
-    ArrayList<InfoItem> data ;
+    ArrayList<InfoItem> data;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,44 +33,60 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_info);
         this.setTitle("정보 게시판");
 
-        ListView listView = (ListView) findViewById(R.id.info_board);
+        listView = (ListView) findViewById(R.id.info_board);
 
-        SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss", Locale.KOREA );
-        Date currentTime = new Date( );
-        String dTime = currentTime.toString();
 
-        //아이템 설정 -> JSON으로 변경
-        this.data = new ArrayList<InfoItem>();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA);
+        Date currentTime = new Date();
+        final String dTime = currentTime.toString();
+        data = new ArrayList<InfoItem>();
+
         InfoItem item1 = new InfoItem("[공지사항] ", " 김준희", dTime, "여기에 내용");
         InfoItem item2 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item3 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item4 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item5 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item6 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item7 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item8 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item9 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item10= new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-        InfoItem item11 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
 
-
-        //리스트에 추가
         data.add(item1);
         data.add(item2);
-        data.add(item3);
-        data.add(item4);
-        data.add(item5);
-        data.add(item6);
-        data.add(item7);
-        data.add(item8);
-        data.add(item9);
-        data.add(item10);
-        data.add(item11);
 
 
-        //아이템 연결
-        InfoAdapter adapter = new InfoAdapter(this, R.layout.activity_info_item, data);
-        listView.setAdapter(adapter);
+        try {
+            JSONObject info = new JSONObject();
+            info.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
+            System.out.println("try들어감");
+            @SuppressLint("StaticFieldLeak") JsonConnection JsonConnection = new JsonConnection(Constant.STAT_ME_URL) {
+                protected void onPostExecute(JSONObject jsonObject) {
+                    System.out.println("protecte들어감");
+                    System.out.println(jsonObject);
+                    if (jsonObject == null) return;
+                    InfoItem info;
+                    data = new ArrayList<InfoItem>();
+                    try {
+                        JSONArray yearArray = jsonObject.getJSONArray("year");
+                        for (int y = 0; y < yearArray.length(); y++) {
+                            JSONObject year = (JSONObject) yearArray.get(y);
+                            for (int m = 0; m < year.getJSONArray("month").length(); m++) {
+                                JSONObject monthArray = (JSONObject) year.getJSONArray("month").get(m);
+                                info = new InfoItem(
+                                        monthArray.getString("num"),
+                                        monthArray.getString("weight"),
+                                        dTime,
+                                        monthArray.getString("fee")
+                                );
+                                data.add(info);
+                            }
+                        }
+                        InfoAdapter adapter = new InfoAdapter(getApplicationContext(), R.layout.activity_info_item, data);
+                        listView.setAdapter(adapter);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            JsonConnection.execute(info);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,14 +97,41 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("info_date", data.get(i).getDate());
                 intent.putExtra("info_content", data.get(i).getContent());
                 startActivity(intent);
-
             }
         });
+        /*
+        try {
+            JSONObject info = new JSONObject();
+            @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.INFO_URL) {
+                protected void onPostExecute(JSONObject jsonObject) {
+                    if (jsonObject == null) {
+                        return;
+                    }
+                    InfoItem data;
+                    try {
+                        JSONArray infoArray = jsonObject.getJSONArray("info");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            };
+            jsonConnection.execute(info);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+    }
+*/
+        //아이템 설정 -> JSON으로 변경
+
 
     }
 
-    @Override
-    public void onClick(View view) {
 
+    void info_btn(View v) {
+        Intent intent = new Intent(getApplicationContext(), InfoEditActivity.class);
+        startActivityForResult(intent, 1000);
     }
 }
+
