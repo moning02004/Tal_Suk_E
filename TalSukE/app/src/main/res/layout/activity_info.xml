@@ -7,6 +7,13 @@
     android:orientation="vertical"
     tools:context=".InfoActivity">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="글작성"
+        android:textSize="15dp"
+        android:onClick="info_btn"
+        />
     <ListView
         android:id="@+id/info_board"
         android:layout_width="match_parent"

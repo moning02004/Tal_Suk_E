@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_margin="20dp"
+    android:padding="7dp"
     android:background="@drawable/back">
 
     <TextView
@@ -18,11 +19,14 @@
     <TextView
         android:id="@+id/info_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="7dp"
+        >
         <TextView
             android:id="@+id/info_author"
             android:layout_width="match_parent"
