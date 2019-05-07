@@ -3,11 +3,9 @@ package com.cookandroid.talsuke;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
-import com.cookandroid.talsuke.Adapter.ExpandAdapter;
+import com.cookandroid.talsuke.Adapter.MonthAdapter;
 import com.cookandroid.talsuke.Model.StatDay;
 import com.cookandroid.talsuke.Model.StatMonth;
 
@@ -36,10 +34,7 @@ public class MeActivity extends AppCompatActivity {
             @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.STAT_ME_URL) {
                 @Override
                 protected void onPostExecute(JSONObject jsonObject) {
-                    System.out.println("AAAAAAAAAAAAFFFFFFFFFFFFFEEEEEEEEEEEEEWWWWWWWWWWWWWWWEEEEEEEEEEEEEEEEEFFFFFFFFFFFF" + jsonObject);
-                    if (jsonObject == null) {
-                        return;
-                    }
+                    if (jsonObject == null) return;
                     StatMonth month;
                     try {
                         JSONArray yearArray = jsonObject.getJSONArray("year");
@@ -67,7 +62,7 @@ public class MeActivity extends AppCompatActivity {
                             }
                         }
 
-                        ExpandAdapter adapter = new ExpandAdapter(getApplicationContext(),R.layout.stat_month_layout,R.layout.stat_day_layout,monthList);
+                        MonthAdapter adapter = new MonthAdapter(getApplicationContext(),R.layout.stat_month_layout,R.layout.stat_day_layout,monthList);
                         listview.setAdapter(adapter);
                     } catch (JSONException e) {
                         e.printStackTrace();

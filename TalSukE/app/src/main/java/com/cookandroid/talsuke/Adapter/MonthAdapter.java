@@ -13,14 +13,14 @@ import com.cookandroid.talsuke.R;
 
 import java.util.ArrayList;
 
-public class ExpandAdapter extends BaseExpandableListAdapter {
+public class MonthAdapter extends BaseExpandableListAdapter {
     private Context context;
     private int groupLayout = 0;
     private int chlidLayout = 0;
     private ArrayList<StatMonth> monthList;
     private LayoutInflater myinf = null;
 
-    public ExpandAdapter(Context context,int groupLay,int chlidLay, ArrayList<StatMonth> monthList){
+    public MonthAdapter(Context context, int groupLay, int chlidLay, ArrayList<StatMonth> monthList){
         this.monthList = monthList;
         this.groupLayout = groupLay;
         this.chlidLayout = chlidLay;

@@ -14,14 +14,14 @@ import com.cookandroid.talsuke.R;
 
 import java.util.ArrayList;
 
-public class ExpandYearAdapter extends BaseExpandableListAdapter {
+public class YearAdapter extends BaseExpandableListAdapter {
     private Context context;
     private int groupLayout = 0;
     private int chlidLayout = 0;
     private ArrayList<StatYear> yearList;
     private LayoutInflater myinf = null;
 
-    public ExpandYearAdapter(Context context,int groupLay,int chlidLay, ArrayList<StatYear> yearList){
+    public YearAdapter(Context context, int groupLay, int chlidLay, ArrayList<StatYear> yearList){
         this.yearList = yearList;
         this.groupLayout = groupLay;
         this.chlidLayout = chlidLay;

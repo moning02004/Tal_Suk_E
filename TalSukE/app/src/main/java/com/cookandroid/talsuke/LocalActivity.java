@@ -5,8 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ExpandableListView;
 
-import com.cookandroid.talsuke.Adapter.ExpandAdapter;
-import com.cookandroid.talsuke.Adapter.ExpandYearAdapter;
+import com.cookandroid.talsuke.Adapter.YearAdapter;
 import com.cookandroid.talsuke.Model.StatMonth;
 import com.cookandroid.talsuke.Model.StatYear;
 
@@ -50,7 +49,7 @@ public class LocalActivity extends AppCompatActivity {
                             ));
                         }
                         yearList.add(year);
-                        ExpandYearAdapter adapter = new ExpandYearAdapter(getApplicationContext(),R.layout.stat_year_layout,R.layout.stat_month_layout, yearList);
+                        YearAdapter adapter = new YearAdapter(getApplicationContext(),R.layout.stat_year_layout,R.layout.stat_month_layout, yearList);
                         listview.setAdapter(adapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
