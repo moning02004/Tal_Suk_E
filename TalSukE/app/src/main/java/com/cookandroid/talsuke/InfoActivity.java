@@ -41,12 +41,6 @@ public class InfoActivity extends AppCompatActivity {
         final String dTime = currentTime.toString();
         data = new ArrayList<InfoItem>();
 
-        InfoItem item1 = new InfoItem("[공지사항] ", " 김준희", dTime, "여기에 내용");
-        InfoItem item2 = new InfoItem("[공지사항] 날", " 기무준희", dTime, "여기에 내용조립다");
-
-        data.add(item1);
-        data.add(item2);
-
 
         try {
             JSONObject info = new JSONObject();

@@ -22,7 +22,7 @@ import java.util.Locale;
 public class InfoEditActivity extends AppCompatActivity {
 
     EditText editTitle;
-    EditText editAuthor;
+    TextView editAuthor;
     EditText editContent;
     TextView testText;
     Button infoEditOk;
@@ -35,7 +35,7 @@ public class InfoEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_edit);
 
         editTitle = (EditText) findViewById(R.id.info_edit_title);
-        editAuthor = (EditText) findViewById(R.id.info_edit_author);
+        editAuthor = (TextView) findViewById(R.id.info_edit_author);
         editContent = (EditText) findViewById(R.id.info_edit_content);
         infoEditOk = (Button) findViewById(R.id.info_edit_ok);
         infoEditCancel = (Button) findViewById(R.id.info_edit_cancel);
