@@ -46,13 +46,11 @@ public class InfoAdapter extends BaseAdapter {
         InfoItem infoItem = data.get(i);
 
         TextView title = (TextView) view.findViewById(R.id.info_title);
-        TextView author = (TextView) view.findViewById(R.id.info_author);
         TextView date = (TextView) view.findViewById(R.id.info_date);
         TextView content = (TextView) view.findViewById(R.id.info_content);
 
         title.setText(infoItem.getTitle());
-        author.setText(infoItem.getAuthor());
-        date.setText(infoItem.getDate());
+        date.setText(infoItem.getCreated());
         content.setText(infoItem.getContent());
 
         return view;

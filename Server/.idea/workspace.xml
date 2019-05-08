@@ -2,56 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71090b78-defc-451f-a32a-fc4f11491cd7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MyApplication/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/androidTest/java/com/cookandroid/myapplication/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/java/com/cookandroid/myapplication/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/menu/menu_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/values-w820dp/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/app/src/test/java/com/cookandroid/myapplication/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyApplication/settings.gradle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talsuk_e/app_statistics/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/talsuk_e/talsuk_e/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/talsuk_e/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TalSukE/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talsuk_e/app_info/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_info/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talsuk_e/app_info/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_info/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talsuk_e/app_info/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_info/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talsuk_e/app_statistics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_statistics/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TalSukE/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Adapter/ExpandAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Adapter/MonthAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Adapter/ExpandYearAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Adapter/YearAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/LocalActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/LocalActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/MeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/MeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Adapter/InfoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Adapter/InfoAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/InfoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/InfoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/InfoClickedActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/InfoDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Model/InfoItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Model/InfoItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/res/layout/activity_info_clicked.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/res/layout/activity_info_clicked.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,50 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/talsuk_e/app_statistics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="10" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/talsuk_e/talsuk_e/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/talsuk_e/talsuk_e/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+            <state relative-caret-position="1565">
+              <caret line="86" column="42" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -116,19 +38,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/admin.py">
+        <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="10" />
+            <state relative-caret-position="520">
+              <caret line="31" column="15" lean-forward="true" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -137,10 +50,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/talsuk_e/app_statistics/urls.py">
+        <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" lean-forward="true" selection-end-line="10" />
+            <state relative-caret-position="114">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -174,15 +99,16 @@
         <option value="$PROJECT_DIR$/talsuk_e/app_statistics/admin.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_statistics/urls.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_statistics/models.py" />
-        <option value="$PROJECT_DIR$/talsuk_e/app_statistics/views.py" />
         <option value="$PROJECT_DIR$/talsuk_e/talsuk_e/settings.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_notice/urls.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_notice/models.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_notice/views.py" />
         <option value="$PROJECT_DIR$/talsuk_e/talsuk_e/urls.py" />
+        <option value="$PROJECT_DIR$/talsuk_e/app_info/admin.py" />
+        <option value="$PROJECT_DIR$/talsuk_e/app_statistics/views.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_info/models.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_info/views.py" />
-        <option value="$PROJECT_DIR$/talsuk_e/app_info/admin.py" />
+        <option value="$PROJECT_DIR$/talsuk_e/app_info/urls.py" />
       </list>
     </option>
   </component>
@@ -198,6 +124,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,17 +149,10 @@
               <item name="talsuk_e" type="462c0819:PsiDirectoryNode" />
               <item name="app_statistics" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="talsuk_e" type="462c0819:PsiDirectoryNode" />
-              <item name="talsuk_e" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -268,18 +188,18 @@
       <workItem from="1556763021212" duration="1758000" />
       <workItem from="1556953438779" duration="3980000" />
       <workItem from="1556966045423" duration="6497000" />
-      <workItem from="1557192903318" duration="843000" />
+      <workItem from="1557192903318" duration="1442000" />
+      <workItem from="1557206909747" duration="2676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24293000" />
+    <option name="totallyTimeSpent" value="27568000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17091152" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17292225" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -388,50 +308,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/talsuk_e/app_statistics/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/talsuk_e/app_statistics/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" lean-forward="true" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/talsuk_e/app_statistics/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="10" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/talsuk_e/talsuk_e/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="551">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
@@ -442,22 +322,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/models.py">
+    <entry file="file://$PROJECT_DIR$/talsuk_e/app_statistics/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="10" />
+        <state relative-caret-position="190">
+          <caret line="10" selection-end-line="10" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -466,6 +336,56 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/talsuk_e/app_statistics/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/talsuk_e/app_statistics/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1565">
+          <caret line="86" column="42" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/talsuk_e/app_info/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="31" column="15" lean-forward="true" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

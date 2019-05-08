@@ -81,35 +81,20 @@ public class InfoEditActivity extends AppCompatActivity {
 
     private void sendArray() {
         JSONObject jsonObject = new JSONObject();
-        SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss", Locale.KOREA );
-        Date currentTime = new Date( );
-        String dTime = currentTime.toString();
         try {
             jsonObject.put("title", editTitle.getText());
-            jsonObject.put("author", editAuthor.getText());
-            jsonObject.put("name", editContent.getText());
-            jsonObject.put("date", dTime);
-            testText.setText(jsonObject.toString());
-            /*
+            jsonObject.put("content", editContent.getText());
+
             @SuppressLint("StaticFieldLeak")
-            JsonConnection jsonConnection = new JsonConnection(Constant.INFO_URL) {
+            JsonConnection jsonConnection = new JsonConnection(Constant.INFO_NEW_URL) {
                 @Override
                 protected void onPostExecute(JSONObject jsonObject) {
-                    try {
-                        if (jsonObject.getString("message").equals("Success")) {
-                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println(jsonObject);
                 }
             };
-            jsonConnection.execute(jsonObject);*/
+            jsonConnection.execute(jsonObject);
 
-        } catch (/*IOException | */JSONException e) {
+        } catch (IOException | JSONException e) {
             Toast.makeText(getApplicationContext(), "에러 발생", Toast.LENGTH_SHORT).show();
         }
     }

@@ -18,17 +18,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-
+    private TextView connect;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setTitle("탈숙이");
-
     }
 
     @Override
@@ -38,12 +40,10 @@ public class HomeActivity extends AppCompatActivity {
         builder.setCancelable(true);
         builder.setTitle("종료 확인");
         builder.setMessage("종료하시겠어요?");
-        builder.setPositiveButton("Confirm",
+        builder.setPositiveButton("확인",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
-                        System.out.println("AAAA" + username);
                         finishAffinity();
                     }
                 });
