@@ -36,4 +36,8 @@ public class SettingActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(intent);
     }
+
+    void WF(View v){
+        
+    }
 }

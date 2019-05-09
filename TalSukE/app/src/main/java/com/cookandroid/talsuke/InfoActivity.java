@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+
 public class InfoActivity extends AppCompatActivity {
     ArrayList<InfoItem> data;
     ListView listView;

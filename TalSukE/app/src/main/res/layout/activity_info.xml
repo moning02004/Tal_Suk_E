@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="글작성"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:onClick="info_btn"
         />
     <ListView
