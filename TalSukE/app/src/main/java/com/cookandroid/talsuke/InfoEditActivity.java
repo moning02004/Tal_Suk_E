@@ -84,12 +84,18 @@ public class InfoEditActivity extends AppCompatActivity {
         try {
             jsonObject.put("title", editTitle.getText());
             jsonObject.put("content", editContent.getText());
-
+            System.out.println(jsonObject);
             @SuppressLint("StaticFieldLeak")
             JsonConnection jsonConnection = new JsonConnection(Constant.INFO_NEW_URL) {
                 @Override
                 protected void onPostExecute(JSONObject jsonObject) {
-                    System.out.println(jsonObject);
+                    try {
+                        if (jsonObject.getString("message").equals("Success")){
+                            finish();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             };
             jsonConnection.execute(jsonObject);

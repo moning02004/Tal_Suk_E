@@ -40,3 +40,14 @@ def register(request):
 def check(request, pk):
     message = 'Success' if not User.objects.all().filter(username=pk).exists() else 'Fail'
     return JsonResponse({'message': message})
+
+
+@csrf_exempt
+def leave(request, pk):
+    try:
+        user = User.objects.get(username=pk)
+        user.delete()
+        message = 'Success'
+    except:
+        message = 'Failed'
+    return JsonResponse({'message': message})

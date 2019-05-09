@@ -3,6 +3,7 @@ package com.cookandroid.talsuke;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -78,7 +79,6 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView adapterView, View v, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), InfoDetailActivity.class);
-                intent.putExtra("info_id", data.get(i).getId());
                 intent.putExtra("info_title", data.get(i).getTitle());
                 intent.putExtra("info_date", data.get(i).getCreated());
                 intent.putExtra("info_content", data.get(i).getContent());
@@ -88,6 +88,13 @@ public class InfoActivity extends AppCompatActivity {
     }
     void info_btn(View v) {
         Intent intent = new Intent(getApplicationContext(), InfoEditActivity.class);
-        startActivityForResult(intent, 1000);
+        startActivityForResult(intent, 1234);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 1234){
+            this.recreate();
+        }
     }
 }
