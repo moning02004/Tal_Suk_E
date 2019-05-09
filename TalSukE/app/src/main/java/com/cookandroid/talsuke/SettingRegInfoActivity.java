@@ -34,10 +34,11 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         regInfoAddressDetail = (EditText) findViewById(R.id.reg_info_address_detail);
         regInfoOK = (Button) findViewById(R.id.reg_info_ok);
         regInfoCancel = (Button) findViewById(R.id.reg_info_cancel);
-
+        setInfo();
         regInfoSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (regInfoSwitch.isChecked()) {
                     infoChangeTrue();
                 } else {
@@ -46,11 +47,17 @@ public class SettingRegInfoActivity extends AppCompatActivity {
             }
 
 
+
+
         });
 
         regInfoOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!regInfoPW1.getText().toString().equals(regInfoPW2.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 finish();
             }
         });
@@ -62,22 +69,41 @@ public class SettingRegInfoActivity extends AppCompatActivity {
             }
         });
     }
-
+    void setInfo() {
+        regInfoID.setText("아이디");
+        regInfoPW1.setText("비번1");
+        regInfoPW2.setText("비번2");
+        regInfoName.setText("이름");
+        regInfoAddress.setText("주소");
+        regInfoAddressDetail.setText("상세주소");
+    }
     void infoChangeTrue() {
         regInfoID.setFocusableInTouchMode(true);
+        regInfoID.setFocusable(true);
         regInfoPW1.setFocusableInTouchMode(true);
+        regInfoPW1.setFocusable(true);
         regInfoPW2.setFocusableInTouchMode(true);
+        regInfoPW2.setFocusable(true);
         regInfoName.setFocusableInTouchMode(true);
+        regInfoName.setFocusable(true);
         regInfoAddress.setFocusableInTouchMode(true);
+        regInfoAddress.setFocusable(true);
         regInfoAddressDetail.setFocusableInTouchMode(true);
+        regInfoAddressDetail.setFocusable(true);
     }
 
     void infoChangeFalse() {
         regInfoID.setFocusableInTouchMode(false);
+        regInfoID.setFocusable(false);
         regInfoPW1.setFocusableInTouchMode(false);
+        regInfoPW1.setFocusable(false);
         regInfoPW2.setFocusableInTouchMode(false);
+        regInfoPW2.setFocusable(false);
         regInfoName.setFocusableInTouchMode(false);
+        regInfoName.setFocusable(false);
         regInfoAddress.setFocusableInTouchMode(false);
+        regInfoAddress.setFocusable(false);
         regInfoAddressDetail.setFocusableInTouchMode(false);
+        regInfoAddressDetail.setFocusable(false);
     }
 }

@@ -23,6 +23,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="단위 요금 설정"
+            android:onClick="regWF"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="회원 정보"
             android:onClick="regInfo"/>
 

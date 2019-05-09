@@ -18,7 +18,6 @@ public class InfoDetailActivity extends AppCompatActivity {
         TextView author = (TextView) findViewById(R.id.info_clicked_author);
         TextView date = (TextView) findViewById(R.id.info_clicked_date);
         TextView content = (TextView) findViewById(R.id.info_clicked_content);
-
         title.setText(intent.getStringExtra("info_title"));
         date.setText(intent.getStringExtra("info_date"));
         content.setText(intent.getStringExtra("info_content"));

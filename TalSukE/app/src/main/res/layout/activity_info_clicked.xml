@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="제목"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         />
     <LinearLayout
@@ -29,13 +29,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="관리자"
-            android:textSize="15dp" />
+            android:textSize="15sp" />
         <TextView
             android:id="@+id/info_clicked_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0000년 00월 00일 00시 00분 00초"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:layout_weight="1"
             />
     </LinearLayout>
