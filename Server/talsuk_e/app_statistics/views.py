@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from collections import OrderedDict
 
 from app_user.models import SukE
 from .models import Year, Month, Day
@@ -14,22 +13,22 @@ def me(request):
     data = json.loads(request.body.decode('utf-8'))
     username = data['username']
     print(username)
-    total_stat = OrderedDict()
+    total_stat = dict()
     total_stat['year'] = []
 
     year_list = Year.objects.all().filter(user=User.objects.get(username=username))
     for year in year_list:
-        stat_year = OrderedDict()
+        stat_year = dict()
         stat_year['num'] = year.num
         stat_year['month'] = []
-        for month in year.month_set.all():
-            stat_month = OrderedDict()
+        for month in reversed(year.month_set.all()):
+            stat_month = dict()
             stat_month['num'] = month.num
             stat_month['weight'] = month.day_set.aggregate(sum=Sum('weight'))['sum']
             stat_month['fee'] = month.day_set.aggregate(sum=Sum('fee'))['sum']
             stat_month['day'] = []
-            for day in month.day_set.all():
-                stat_day = OrderedDict()
+            for day in reversed(month.day_set.all()):
+                stat_day = dict()
                 stat_day['num'] = day.num
                 stat_day['weight'] = day.weight
                 stat_day['fee'] = day.fee
@@ -46,20 +45,20 @@ def local(request):
     username = data['username']
 
     suke_list = SukE.objects.all().filter(address1=User.objects.get(username=username).suke.address1, address2=User.objects.get(username=username).suke.address2)
-    total_stat = OrderedDict()
+    total_stat = dict()
     sum = dict()
 
     for suke in suke_list:
-        for year in Year.objects.all().filter(user=suke.user):
+        for year in reversed(suke.user.year_set.all()):
             total_stat['num'] = year.num
             total_stat['month'] = []
-            for month in Month.objects.all().filter(year=year):
+            for month in reversed(year.month_set.all()):
                 sum[month.num] = [0, 0] if not month.num in sum.keys() else [(sum[month.num])[0], (sum[month.num])[1]]
                 (sum[month.num])[0] += month.day_set.aggregate(sum=Sum('weight'))['sum']
                 (sum[month.num])[1] += month.day_set.aggregate(sum=Sum('fee'))['sum']
 
     for key, value in sum.items():
-        stat_month = OrderedDict()
+        stat_month = dict()
         stat_month['num'] = key
         stat_month['weight'] = value[0]
         stat_month['fee'] = value[1]
