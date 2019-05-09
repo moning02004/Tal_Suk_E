@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class InfoActivity extends AppCompatActivity {
-
     ArrayList<InfoItem> data;
     ListView listView;
 
@@ -33,6 +32,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         this.setTitle("정보 게시판");
 
+
         listView = (ListView) findViewById(R.id.info_board);
 
 
@@ -41,32 +41,26 @@ public class InfoActivity extends AppCompatActivity {
         final String dTime = currentTime.toString();
         data = new ArrayList<InfoItem>();
 
+        listView = findViewById(R.id.info_board);
 
         try {
             JSONObject info = new JSONObject();
             info.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
-            System.out.println("try들어감");
-            @SuppressLint("StaticFieldLeak") JsonConnection JsonConnection = new JsonConnection(Constant.STAT_ME_URL) {
+
+            @SuppressLint("StaticFieldLeak") JsonConnection JsonConnection = new JsonConnection(Constant.INFO_INDEX_URL) {
                 protected void onPostExecute(JSONObject jsonObject) {
-                    System.out.println("protecte들어감");
                     System.out.println(jsonObject);
                     if (jsonObject == null) return;
-                    InfoItem info;
+
                     data = new ArrayList<InfoItem>();
                     try {
-                        JSONArray yearArray = jsonObject.getJSONArray("year");
-                        for (int y = 0; y < yearArray.length(); y++) {
-                            JSONObject year = (JSONObject) yearArray.get(y);
-                            for (int m = 0; m < year.getJSONArray("month").length(); m++) {
-                                JSONObject monthArray = (JSONObject) year.getJSONArray("month").get(m);
-                                info = new InfoItem(
-                                        monthArray.getString("num"),
-                                        monthArray.getString("weight"),
-                                        dTime,
-                                        monthArray.getString("fee")
-                                );
-                                data.add(info);
-                            }
+                        JSONArray infoList = jsonObject.getJSONArray("info");
+                        for (int i=0; i<infoList.length(); i++) {
+                            data.add(new InfoItem(
+                                    ((JSONObject) infoList.get(i)).getString("title"),
+                                    ((JSONObject) infoList.get(i)).getString("created"),
+                                    ((JSONObject) infoList.get(i)).getString("content")
+                            ));
                         }
                         InfoAdapter adapter = new InfoAdapter(getApplicationContext(), R.layout.activity_info_item, data);
                         listView.setAdapter(adapter);
@@ -76,56 +70,24 @@ public class InfoActivity extends AppCompatActivity {
                 }
             };
             JsonConnection.execute(info);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView adapterView, View v, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(), InfoClickedActivity.class);
+                Intent intent = new Intent(getApplicationContext(), InfoDetailActivity.class);
+                intent.putExtra("info_id", data.get(i).getId());
                 intent.putExtra("info_title", data.get(i).getTitle());
-                intent.putExtra("info_author", data.get(i).getAuthor());
-                intent.putExtra("info_date", data.get(i).getDate());
+                intent.putExtra("info_date", data.get(i).getCreated());
                 intent.putExtra("info_content", data.get(i).getContent());
                 startActivity(intent);
             }
         });
-        /*
-        try {
-            JSONObject info = new JSONObject();
-            @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.INFO_URL) {
-                protected void onPostExecute(JSONObject jsonObject) {
-                    if (jsonObject == null) {
-                        return;
-                    }
-                    InfoItem data;
-                    try {
-                        JSONArray infoArray = jsonObject.getJSONArray("info");
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            };
-            jsonConnection.execute(info);
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
     }
-*/
-        //아이템 설정 -> JSON으로 변경
-
-
-    }
-
-
     void info_btn(View v) {
         Intent intent = new Intent(getApplicationContext(), InfoEditActivity.class);
         startActivityForResult(intent, 1000);
     }
 }
-

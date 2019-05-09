@@ -14,19 +14,19 @@ def me(request):
     data = json.loads(request.body.decode('utf-8'))
     username = data['username']
     print(username)
-    me_stat = OrderedDict()
-    me_stat['year'] = []
-    years = Year.objects.all().filter(user=User.objects.get(username=username))
-    for year in years:
+    total_stat = OrderedDict()
+    total_stat['year'] = []
+
+    year_list = Year.objects.all().filter(user=User.objects.get(username=username))
+    for year in year_list:
         stat_year = OrderedDict()
         stat_year['num'] = year.num
         stat_year['month'] = []
         for month in year.month_set.all():
             stat_month = OrderedDict()
             stat_month['num'] = month.num
-            stat_month['count'] = month.day_set.all().count()
-            stat_month['weight'] = month.day_set.aggregate(sum = Sum('weight'))['sum']
-            stat_month['fee'] = month.day_set.aggregate(sum = Sum('fee'))['sum']
+            stat_month['weight'] = month.day_set.aggregate(sum=Sum('weight'))['sum']
+            stat_month['fee'] = month.day_set.aggregate(sum=Sum('fee'))['sum']
             stat_month['day'] = []
             for day in month.day_set.all():
                 stat_day = OrderedDict()
@@ -35,36 +35,24 @@ def me(request):
                 stat_day['fee'] = day.fee
                 stat_month['day'].append(stat_day)
             stat_year['month'].append(stat_month)
-        me_stat['year'].append(stat_year)
-
-    print(json.dumps(me_stat, ensure_ascii=False, indent='\t'))
-
-    return JsonResponse(me_stat, safe=False)
+        total_stat['year'].append(stat_year)
+    print(json.dumps(total_stat, ensure_ascii=False, indent='\t'))
+    return JsonResponse(total_stat, safe=False)
 
 
 @csrf_exempt
 def local(request):
     data = json.loads((request.body).decode('utf-8'))
     username = data['username']
-    print(username)
-    address1 = User.objects.get(username=username).suke.address1
-    address2 = User.objects.get(username=username).suke.address2
 
+    suke_list = SukE.objects.all().filter(address1=User.objects.get(username=username).suke.address1, address2=User.objects.get(username=username).suke.address2)
+    total_stat = OrderedDict()
     sum = dict()
-    local_stat = OrderedDict()
-    stat_year = OrderedDict()
-    stat_month = OrderedDict()
-
-    suke_list = SukE.objects.all().filter(address1=address1, address2=address2)
-    local_stat = OrderedDict()
-    stat_year = OrderedDict()
-    stat_month = OrderedDict()
 
     for suke in suke_list:
-        local_stat['year'] = []
         for year in Year.objects.all().filter(user=suke.user):
-            stat_year['num'] = year.num
-            stat_year['month'] = []
+            total_stat['num'] = year.num
+            total_stat['month'] = []
             for month in Month.objects.all().filter(year=year):
                 sum[month.num] = [0, 0] if not month.num in sum.keys() else [(sum[month.num])[0], (sum[month.num])[1]]
                 (sum[month.num])[0] += month.day_set.aggregate(sum=Sum('weight'))['sum']
@@ -75,9 +63,9 @@ def local(request):
         stat_month['num'] = key
         stat_month['weight'] = value[0]
         stat_month['fee'] = value[1]
-        stat_year['month'].append(stat_month)
-    print(json.dumps(stat_year, ensure_ascii=False, indent='\t'))
-    return JsonResponse(stat_year, safe=False)
+        total_stat['month'].append(stat_month)
+    print(json.dumps(total_stat, ensure_ascii=False, indent='\t'))
+    return JsonResponse(total_stat, safe=False)
 
 @csrf_exempt
 def save(request):
@@ -95,8 +83,8 @@ def save(request):
     new_day = Day()
     new_day.num = day
     new_day.month = new_month
-    new_day.fee = 50
     new_day.weight = 450
+    new_day.fee = new_day.weight*1/1000*72
     new_day.save()
     return JsonResponse({'message':'Success'})
 

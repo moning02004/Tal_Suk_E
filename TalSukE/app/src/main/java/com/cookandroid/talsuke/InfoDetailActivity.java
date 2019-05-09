@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class InfoClickedActivity extends AppCompatActivity {
+public class InfoDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,6 @@ public class InfoClickedActivity extends AppCompatActivity {
         TextView content = (TextView) findViewById(R.id.info_clicked_content);
 
         title.setText(intent.getStringExtra("info_title"));
-        author.setText(intent.getStringExtra("info_author"));
         date.setText(intent.getStringExtra("info_date"));
         content.setText(intent.getStringExtra("info_content"));
     }
