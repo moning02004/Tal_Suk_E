@@ -1,5 +1,6 @@
 package com.cookandroid.talsuke;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,5 +20,20 @@ public class SettingActivity extends AppCompatActivity {
         editor.remove("username");
         editor.apply();
         finish();
+    }
+
+    void regDelete(View v) {
+        Intent intent = new Intent(getApplicationContext(), SettingRegDelActivity.class);
+        startActivity(intent);
+    }
+
+    void regInfo(View v) {
+        Intent intent = new Intent(getApplicationContext(), SettingRegInfoActivity.class);
+        startActivity(intent);
+    }
+
+    void regback(View v) {
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
     }
 }

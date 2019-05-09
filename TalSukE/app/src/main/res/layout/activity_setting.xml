@@ -17,12 +17,20 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="회원 정보 수정" />
+            android:text="메인화면"
+            android:onClick="regback"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="회원 탈퇴" />
+            android:text="회원 정보"
+            android:onClick="regInfo"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="회원 탈퇴"
+            android:onClick="regDelete"/>
 
         <Button
             android:id="@+id/setting_logout"

@@ -32,6 +32,15 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         this.setTitle("정보 게시판");
 
+
+        listView = (ListView) findViewById(R.id.info_board);
+
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA);
+        Date currentTime = new Date();
+        final String dTime = currentTime.toString();
+        data = new ArrayList<InfoItem>();
+
         listView = findViewById(R.id.info_board);
 
         try {

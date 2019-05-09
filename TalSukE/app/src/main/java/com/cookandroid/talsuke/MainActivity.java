@@ -17,6 +17,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
     EditText username;
     EditText userpw;
+
     @SuppressLint("ShowToast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         userpw = findViewById(R.id.login_pw);
         String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
         if (username != null && !username.equals("")) {
-            Toast.makeText(getApplicationContext(), getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "")+"님 환영합니다.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "") + "님 환영합니다.", Toast.LENGTH_LONG).show();
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }
     }
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent();
                         if (jsonObject.getString("permission").equals("user")) {
                             intent = new Intent(getApplicationContext(), HomeActivity.class);
-                            Toast.makeText(getApplicationContext(), getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "")+"님 환영합니다.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "") + "님 환영합니다.", Toast.LENGTH_LONG).show();
                             startActivity(intent);
                         }
                     } else {
@@ -66,15 +67,13 @@ public class MainActivity extends AppCompatActivity {
         connection.execute(userInfo);
     }
 
-    void temp(View v){
+    void temp(View v) {
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(intent);
     }
 
-    void register(View v){
+    void register(View v) {
         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivity(intent);
     }
-
-
 }
