@@ -11,7 +11,6 @@ import android.widget.ListView;
 
 import com.cookandroid.talsuke.Adapter.InfoAdapter;
 import com.cookandroid.talsuke.Model.InfoItem;
-import com.cookandroid.talsuke.Model.StatMonth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -88,7 +87,7 @@ public class InfoActivity extends AppCompatActivity {
         });
     }
     void info_btn(View v) {
-        Intent intent = new Intent(getApplicationContext(), InfoEditActivity.class);
+        Intent intent = new Intent(getApplicationContext(), InfoNewActivity.class);
         startActivityForResult(intent, 1234);
     }
 
