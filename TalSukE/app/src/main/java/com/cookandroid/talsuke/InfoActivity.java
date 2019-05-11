@@ -7,11 +7,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.cookandroid.talsuke.Adapter.InfoAdapter;
 import com.cookandroid.talsuke.Model.InfoItem;
-import com.cookandroid.talsuke.Model.StatMonth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +34,11 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         this.setTitle("정보 게시판");
 
+        String permission = getSharedPreferences("SESSION", MODE_PRIVATE).getString("permission", "");
+        if (permission!= null && permission.equals("user")){
+            Button new_btn = findViewById(R.id.info_new_btn);
+            new_btn.setVisibility(View.INVISIBLE);
+        }
 
         listView = (ListView) findViewById(R.id.info_board);
 
@@ -87,8 +92,8 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
     }
-    void info_btn(View v) {
-        Intent intent = new Intent(getApplicationContext(), InfoEditActivity.class);
+    void new_btn(View v) {
+        Intent intent = new Intent(getApplicationContext(), InfoNewActivity.class);
         startActivityForResult(intent, 1234);
     }
 

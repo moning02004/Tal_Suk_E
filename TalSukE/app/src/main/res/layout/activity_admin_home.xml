@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminHomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="594dp"
+        android:layout_marginTop="120dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp">
+
+        <Button
+            android:id="@+id/admin_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="info_btn"
+            android:text="정보 게시판"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/admin_suke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:onClick="show_suke"
+            android:text="회원 조회"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/admin_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:onClick="logout"
+            android:text="로그아웃"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

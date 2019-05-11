@@ -8,12 +8,12 @@
     tools:context=".InfoActivity">
 
     <Button
+        android:id="@+id/info_new_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="new_btn"
         android:text="글작성"
-        android:textSize="15sp"
-        android:onClick="info_btn"
-        />
+        android:textSize="15sp" />
     <ListView
         android:id="@+id/info_board"
         android:layout_width="match_parent"

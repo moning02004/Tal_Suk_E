@@ -6,18 +6,12 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".InfoEditActivity">
+    tools:context=".InfoNewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/info_test"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="asdfasdf"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,31 +22,36 @@
             android:id="@+id/info_edit_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:hint="[공지사항]"
             android:singleLine="true" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:text="작성자" />
 
         <TextView
             android:id="@+id/info_edit_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:hint="탈숙이"
-            android:textSize="20sp"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:text="내용" />
 
         <EditText
             android:id="@+id/info_edit_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:hint="내용" />
 
 
@@ -60,36 +59,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="72dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/info_new_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:onClick="send"
+            android:text="작성" />
 
-            <Button
-                android:id="@+id/info_edit_ok"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="작성" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/info_edit_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="취소" />
-
-
-        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

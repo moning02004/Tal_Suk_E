@@ -28,9 +28,14 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.login_id);
         userpw = findViewById(R.id.login_pw);
         String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
+        String permission = getSharedPreferences("SESSION", MODE_PRIVATE).getString("permission", "");
         if (username != null && !username.equals("")) {
             Toast.makeText(getApplicationContext(), getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "") + "님 환영합니다.", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            if (permission != null && permission.equals("user")){
+                startActivity(new Intent(getApplicationContext(), UserHomeActivity.class));
+            } else {
+                startActivity(new Intent(getApplicationContext(), AdminHomeActivity.class));
+            }
         }
     }
 
@@ -39,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
         userInfo.put("username", username.getText().toString());
         userInfo.put("password", userpw.getText().toString());
 
-        @SuppressLint("StaticFieldLeak")
-        JsonConnection connection = new JsonConnection(Constant.LOGIN_URL) {
+        @SuppressLint("StaticFieldLeak") JsonConnection connection = new JsonConnection(Constant.LOGIN_URL) {
             @Override
             protected void onPostExecute(JSONObject jsonObject) {
                 try {
@@ -49,13 +53,16 @@ public class MainActivity extends AppCompatActivity {
                     } else if (jsonObject.getString("message").equals("Exist")) {
                         SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
                         editor.putString("username", username.getText().toString());
+                        editor.putString("permission", jsonObject.getString("permission"));
                         editor.apply();
                         Intent intent = new Intent();
                         if (jsonObject.getString("permission").equals("user")) {
-                            intent = new Intent(getApplicationContext(), HomeActivity.class);
-                            Toast.makeText(getApplicationContext(), getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "") + "님 환영합니다.", Toast.LENGTH_LONG).show();
-                            startActivity(intent);
+                            intent = new Intent(getApplicationContext(), UserHomeActivity.class);
+                        } else {
+                            intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
                         }
+                        Toast.makeText(getApplicationContext(), getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "") + "님 환영합니다.", Toast.LENGTH_LONG).show();
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "해당 계정이 없습니다.", Toast.LENGTH_LONG).show();
                     }
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void temp(View v) {
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), UserHomeActivity.class);
         startActivity(intent);
     }
 

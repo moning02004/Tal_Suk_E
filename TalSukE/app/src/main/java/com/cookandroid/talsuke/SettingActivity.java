@@ -33,7 +33,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     void regback(View v) {
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), UserHomeActivity.class);
         startActivity(intent);
     }
 

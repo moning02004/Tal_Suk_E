@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class InfoEditActivity extends AppCompatActivity {
+public class InfoNewActivity extends AppCompatActivity {
 
     EditText editTitle;
     TextView editAuthor;
@@ -35,33 +35,11 @@ public class InfoEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_edit);
 
         editTitle = (EditText) findViewById(R.id.info_edit_title);
-        editAuthor = (TextView) findViewById(R.id.info_edit_author);
         editContent = (EditText) findViewById(R.id.info_edit_content);
-        infoEditOk = (Button) findViewById(R.id.info_edit_ok);
-        infoEditCancel = (Button) findViewById(R.id.info_edit_cancel);
-        testText = (TextView) findViewById(R.id.info_test);
-
-        infoEditOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendArray();
-            }
-        });
-
-        infoEditCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                show();
-            }
-        });
     }
 
     @Override
     public void onBackPressed() {
-        show();
-    }
-
-    void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("뒤로 가시겠습니까?");
         ((AlertDialog.Builder) builder).setMessage("작성한 내용은 사라집니다.");
@@ -79,7 +57,7 @@ public class InfoEditActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void sendArray() {
+    void send(View v) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("title", editTitle.getText());
