@@ -26,17 +26,12 @@
         </activity>
         <activity android:name=".UserHomeActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".InfoClickedActivity" />
+        <activity android:name=".InfoDetailActivity" />
         <activity android:name=".InfoNewActivity" />
         <activity android:name=".SettingRegDelActivity" />
         <activity android:name=".SettingRegInfoActivity" />
         <activity android:name=".InfoDetailActivity" />
-        <activity android:name=".InfoNewActivity" />
-<<<<<<< HEAD
         <activity android:name=".WeightfeePopupActivity" />
-=======
-        <activity android:name=".WeightfeePopupActivity"></activity>
->>>>>>> 816f2ff471ebfce780b820d3408c9e0d480e083b
     </application>
 
 </manifest>
