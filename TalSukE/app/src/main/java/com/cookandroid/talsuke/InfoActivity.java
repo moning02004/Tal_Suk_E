@@ -92,11 +92,7 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
     }
-<<<<<<< HEAD
     void new_btn(View v) {
-=======
-    void info_btn(View v) {
->>>>>>> 816f2ff471ebfce780b820d3408c9e0d480e083b
         Intent intent = new Intent(getApplicationContext(), InfoNewActivity.class);
         startActivityForResult(intent, 1234);
     }
