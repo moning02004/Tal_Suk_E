@@ -2,9 +2,12 @@ package com.cookandroid.talsuke;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -19,11 +22,14 @@ public class SettingRegInfoActivity extends AppCompatActivity {
     EditText regInfoAddressDetail;
     Button regInfoOK;
     Button regInfoCancel;
+    ImageView regInfoSee;
+    Boolean regInfoSeeCheck = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_reg_info);
+
 
         regInfoSwitch = (Switch) findViewById(R.id.reg_info_switch);
         regInfoID = (EditText) findViewById(R.id.reg_info_id);
@@ -34,19 +40,22 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         regInfoAddressDetail = (EditText) findViewById(R.id.reg_info_address_detail);
         regInfoOK = (Button) findViewById(R.id.reg_info_ok);
         regInfoCancel = (Button) findViewById(R.id.reg_info_cancel);
+        regInfoSee = (ImageView) findViewById(R.id.reg_info_see);
+
+        regInfoPW1.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        regInfoPW2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
         setInfo();
+
         regInfoSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (regInfoSwitch.isChecked()) {
                     infoChangeTrue();
                 } else {
                     infoChangeFalse();
                 }
             }
-
-
 
 
         });
@@ -68,7 +77,26 @@ public class SettingRegInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        regInfoSee.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                if (regInfoSeeCheck == true) {
+                    regInfoSee.setImageResource(R.drawable.see1);
+                    regInfoPW1.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    regInfoPW2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    regInfoSeeCheck = false;
+                } else {
+                    regInfoSee.setImageResource(R.drawable.see2);
+                    regInfoPW1.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    regInfoPW2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    regInfoSeeCheck = true;
+
+                }
+            }
+        });
     }
+
     void setInfo() {
         regInfoID.setText("아이디");
         regInfoPW1.setText("비번1");
@@ -77,6 +105,7 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         regInfoAddress.setText("주소");
         regInfoAddressDetail.setText("상세주소");
     }
+
     void infoChangeTrue() {
         regInfoID.setFocusableInTouchMode(true);
         regInfoID.setFocusable(true);

@@ -38,6 +38,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     void WF(View v){
-        
+        Intent intent = new Intent(this, WeightfeePopupActivity.class);
+        startActivity(intent);
     }
 }

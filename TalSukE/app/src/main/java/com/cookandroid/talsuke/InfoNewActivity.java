@@ -15,9 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class InfoNewActivity extends AppCompatActivity {
 
@@ -32,7 +29,7 @@ public class InfoNewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_edit);
+        setContentView(R.layout.activity_info_new);
 
         editTitle = (EditText) findViewById(R.id.info_edit_title);
         editContent = (EditText) findViewById(R.id.info_edit_content);
