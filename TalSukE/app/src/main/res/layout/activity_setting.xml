@@ -21,6 +21,7 @@
             android:onClick="regback"/>
 
         <Button
+            android:id="@+id/reg_wf_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="단위 요금 설정"

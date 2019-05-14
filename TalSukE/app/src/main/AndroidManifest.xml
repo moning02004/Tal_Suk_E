@@ -30,8 +30,7 @@
         <activity android:name=".InfoNewActivity" />
         <activity android:name=".SettingRegDelActivity" />
         <activity android:name=".SettingRegInfoActivity" />
-        <activity android:name=".InfoDetailActivity" />
-        <activity android:name=".WeightfeePopupActivity" />
+        <activity android:name=".WeightfeeActivity" />
     </application>
 
 </manifest>

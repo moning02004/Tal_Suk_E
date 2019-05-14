@@ -8,11 +8,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.cookandroid.talsuke.Model.WeightFee;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,31 +25,51 @@ public class UserHomeActivity extends AppCompatActivity {
     int Weight;
     ImageView imot;
     TextView fee;
-    WeightFee WF;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setTitle("탈숙이");
-        imot = (ImageView)findViewById(R.id.home_imot);
-        fee = (TextView)findViewById(R.id.home_fee);
+        imot = (ImageView) findViewById(R.id.home_imot);
+        fee = (TextView) findViewById(R.id.home_fee);
 
-        try{
+
+
+
+        getWeight();
+        changeImot();
+    }
+
+    void changeImot() {
+        if (totalWeight == 0) imot.setImageResource(R.drawable.status0);
+        else if (totalWeight > 0 && totalWeight <= 12000) imot.setImageResource(R.drawable.status1);
+        else if (totalWeight > 12000 && totalWeight <= 24000)
+            imot.setImageResource(R.drawable.status2);
+        else if (totalWeight > 24000 && totalWeight <= 36000)
+            imot.setImageResource(R.drawable.status3);
+        else if (totalWeight > 36000 && totalWeight <= 48000)
+            imot.setImageResource(R.drawable.status4);
+        else if (totalWeight == 48000) imot.setImageResource(R.drawable.status5);
+
+    }
+
+    void getWeight() {
+        try {
             JSONObject info = new JSONObject();
             info.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
             @SuppressLint("StaticFieldLeak") JsonConnection JsonConnection = new JsonConnection(Constant.STAT_ME_URL) {
-                protected void onPostExecute(JSONObject jsonObject){
+                protected void onPostExecute(JSONObject jsonObject) {
                     System.out.println(jsonObject);
-                    if(jsonObject == null) return;
-                    try{
+                    if (jsonObject == null) return;
+                    try {
                         JSONArray yearArray = jsonObject.getJSONArray("year");
-                        for(int y=0; y<yearArray.length(); y++){
-                            JSONObject year = (JSONObject)yearArray.get(y);
-                            for(int m=0; m<year.getJSONArray("month").length(); m++){
-                                JSONObject monthArray = (JSONObject)year.getJSONArray("month").get(m);
+                        for (int y = 0; y < yearArray.length(); y++) {
+                            JSONObject year = (JSONObject) yearArray.get(y);
+                            for (int m = 0; m < year.getJSONArray("month").length(); m++) {
+                                JSONObject monthArray = (JSONObject) year.getJSONArray("month").get(m);
                                 totalWeight = Integer.parseInt(monthArray.getString("weight"));
-                                for(int d=0; d<monthArray.getJSONArray("day").length(); d++){
-                                    JSONObject dayArray = (JSONObject)monthArray.getJSONArray("day").get(d);
+                                for (int d = 0; d < monthArray.getJSONArray("day").length(); d++) {
+                                    JSONObject dayArray = (JSONObject) monthArray.getJSONArray("day").get(d);
                                     String weight = dayArray.getString("weight");
                                     Weight = Integer.parseInt(weight);
                                 }
@@ -65,28 +84,6 @@ public class UserHomeActivity extends AppCompatActivity {
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        getWeight();
-        changeImot();
-
-    }
-
-    void changeImot() {
-        if(totalWeight==0) imot.setImageResource(R.drawable.status0);
-        else if(totalWeight>0 && totalWeight<=12000) imot.setImageResource(R.drawable.status1);
-        else if(totalWeight>12000 && totalWeight<=24000) imot.setImageResource(R.drawable.status2);
-        else if(totalWeight>24000 && totalWeight<=36000) imot.setImageResource(R.drawable.status3);
-        else if(totalWeight>36000 && totalWeight<=48000) imot.setImageResource(R.drawable.status4);
-        else if(totalWeight==48000)imot.setImageResource(R.drawable.status5);
-
-    }
-
-    void getWeight() {
-
     }
 
     @Override
@@ -112,8 +109,7 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     void update(View v) {
-
-        fee.setText(" 무게 : " + Weight +  "g    요금 : " + WF.getWeightFee());
+        fee.setText(" 무게 : " + Weight + "g    요금 : " );
     }
 
     void dehydration(View v) {
@@ -144,7 +140,7 @@ public class UserHomeActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         if (resultCode == RESULT_CANCELED) {
-            switch (requestCode){
+            switch (requestCode) {
                 case 1000:
                     String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
                     if (username != null && username.equals("")) {
