@@ -3,7 +3,12 @@ package com.cookandroid.talsuke.Statistaics;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.cookandroid.talsuke.Adapter.MonthAdapter;
 import com.cookandroid.talsuke.Main.Constant;
@@ -22,6 +27,11 @@ import java.util.ArrayList;
 public class MeActivity extends AppCompatActivity {
     private ArrayList<StatMonth> monthList;
     private ExpandableListView listview;
+    private Spinner year_list;
+    private ArrayList<String> yearList;
+
+    private String currentYear;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +39,10 @@ public class MeActivity extends AppCompatActivity {
         this.setTitle("내집통계");
 
         listview = findViewById(R.id.me_month_board);
+        year_list = findViewById(R.id.me_year_list);
         this.monthList = new ArrayList<>();
+        this.yearList = new ArrayList<>();
+
         try {
             JSONObject userInfo = new JSONObject();
             userInfo.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
@@ -43,6 +56,7 @@ public class MeActivity extends AppCompatActivity {
                         JSONArray yearArray = jsonObject.getJSONArray("year");
                         for (int y = 0; y < yearArray.length(); y++) {
                             JSONObject year = (JSONObject) yearArray.get(y);
+                            yearList.add(year.getString("num"));
                             for (int m = 0; m < year.getJSONArray("month").length(); m++) {
                                 JSONObject monthArray = (JSONObject) year.getJSONArray("month").get(m);
                                 month = new StatMonth(
@@ -65,8 +79,10 @@ public class MeActivity extends AppCompatActivity {
                             }
                         }
 
+                        ArrayAdapter spinnerAdapter = new ArrayAdapter(getApplicationContext(), R.layout.year_list_layout, yearList);
                         MonthAdapter adapter = new MonthAdapter(getApplicationContext(),R.layout.stat_month_layout,R.layout.stat_day_layout,monthList);
                         listview.setAdapter(adapter);
+                        year_list.setAdapter(spinnerAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -76,5 +92,19 @@ public class MeActivity extends AppCompatActivity {
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+
+        year_list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                currentYear = (String) year_list.getItemAtPosition(position);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+    void find(View v){
+        System.out.println(yearList);
     }
 }
