@@ -10,11 +10,11 @@ import json
 def login(request):
     data = json.loads(request.body.decode('utf-8'))
     username = data['username']
-    if User.objects.all().filter(username=username).exists() and SukE.objects.all().filter(user=User.objects.get(username=username)).exists():
+    if SukE.objects.all().filter(user=User.objects.get(username=username)).exists():
         suke = SukE.objects.get(user=User.objects.get(username=username))
         if suke.user.check_password(data['password']):
-            return JsonResponse({'permission': 'user', 'message': 'Exist'})
-    return JsonResponse({'message':'Not Found'})
+            return JsonResponse({'permission': 'admin' if suke.user.is_superuser else 'user' , 'message': 'Success'})
+    return JsonResponse({'message': 'Fail'})
 
 
 @csrf_exempt
@@ -37,17 +37,39 @@ def register(request):
 
 
 @csrf_exempt
-def check(request, pk):
-    message = 'Success' if not User.objects.all().filter(username=pk).exists() else 'Fail'
-    return JsonResponse({'message': message})
+def edit(request):
+    data = json.loads(request.body.encode('utf-8'))
+    try:
+        user = User.objects.get(username=data['username'])
+        user.suke.name = data['name']
+        user.suke.phone = data['phone']
+        user.set_password(data['password']) if not data['password'] == '' else None
+        user.save()
+        return JsonResponse({'message': 'Success'})
+    except:
+        return JsonResponse({'message': 'Fail'})
 
 
 @csrf_exempt
-def leave(request, pk):
+def check(request, pk):
+    return JsonResponse({
+        'message': 'Success' \
+        if not User.objects.all().filter(username=pk).exists() \
+        else 'Fail'
+    })
+
+
+@csrf_exempt
+def leave(request):
     try:
-        user = User.objects.get(username=pk)
+        data = json.loads(request.body.encode('utf-8'))
+        username = data['username']
+        user = User.objects.get(username=username)
         user.delete()
         message = 'Success'
     except:
-        message = 'Failed'
+        message = 'Fail'
     return JsonResponse({'message': message})
+
+
+
