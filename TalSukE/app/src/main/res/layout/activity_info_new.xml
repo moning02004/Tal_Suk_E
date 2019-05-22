@@ -30,21 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="작성자" />
-
-        <TextView
-            android:id="@+id/info_edit_author"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:hint="탈숙이"
-            android:singleLine="true"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:text="내용" />
 
         <EditText
@@ -68,7 +53,7 @@
             android:id="@+id/info_new_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="send"
+            android:onClick="save"
             android:text="작성" />
 
     </LinearLayout>
