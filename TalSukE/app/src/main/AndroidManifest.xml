@@ -12,18 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminHomeActivity"></activity>
-        <activity android:name=".InfoActivity" />
-        <activity android:name=".LocalActivity" />
-        <activity android:name=".MeActivity" />
-        <activity android:name=".SettingActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Main.AdminHomeActivity"></activity>
+        <activity android:name=".Statistaics.MeActivity" />
+        <activity android:name=".Main.RegisterActivity" />
+        <activity android:name=".Main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".UserHomeActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".InfoDetailActivity" />
@@ -31,6 +30,15 @@
         <activity android:name=".SettingRegDelActivity" />
         <activity android:name=".SettingRegInfoActivity" />
         <activity android:name=".WeightfeeActivity" />
+=======
+        <activity android:name=".Main.UserHomeActivity" />
+        <activity android:name="com.cookandroid.talsuke.Settings.SettingActivity" />
+        <activity android:name="com.cookandroid.talsuke.Settings.SettingRegDelActivity" />
+        <activity android:name="com.cookandroid.talsuke.Settings.SettingRegInfoActivity" />
+        <activity android:name="com.cookandroid.talsuke.Infomation.InfoDetailActivity" />
+        <activity android:name="com.cookandroid.talsuke.Infomation.InfoNewActivity" />
+        <activity android:name="com.cookandroid.talsuke.Infomation.InfoActivity" />
+>>>>>>> upstream/master
     </application>
 
 </manifest>

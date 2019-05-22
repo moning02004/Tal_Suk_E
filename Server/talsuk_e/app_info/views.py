@@ -33,4 +33,8 @@ def new(request):
         info.save()
         return JsonResponse({'message': 'Success'})
     except:
+<<<<<<< Updated upstream
         return JsonResponse({'message': 'Fail'})
+=======
+        return JsonResponse({'message': 'Fail'})
+>>>>>>> Stashed changes

@@ -4,10 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:layout_margin="10dp"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".UserHomeActivity">
+=======
+    android:layout_marginTop="30dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Main.UserHomeActivity">
+>>>>>>> upstream/master
 
     <ImageView
         android:id="@+id/home_imot"
@@ -21,7 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+<<<<<<< HEAD
         android:hint="W e i g h t"
+=======
+        android:text="W e i g h t"
+>>>>>>> upstream/master
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -49,6 +60,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
@@ -62,6 +74,10 @@
             android:textSize="20sp" />
     </LinearLayout>
 
+=======
+        android:layout_height="71dp"
+        android:orientation="vertical"></LinearLayout>
+>>>>>>> upstream/master
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,7 +87,7 @@
 
         <Button
             android:id="@+id/home_me"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="me"
@@ -79,12 +95,17 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/home_local"
-            android:layout_width="wrap_content"
+            android:id="@+id/home_dehyd"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+<<<<<<< HEAD
             android:onClick="local"
             android:text="지역 통계"
+=======
+            android:onClick="dehydration"
+            android:text="탈수"
+>>>>>>> upstream/master
             android:textSize="20sp" />
     </LinearLayout>
 

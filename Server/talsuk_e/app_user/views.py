@@ -72,4 +72,7 @@ def leave(request):
     return JsonResponse({'message': message})
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
