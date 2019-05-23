@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.cookandroid.talsuke.Adapter.MonthAdapter;
 import com.cookandroid.talsuke.Main.Constant;
@@ -23,12 +22,13 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MeActivity extends AppCompatActivity {
-    private ArrayList<StatMonth> monthList;
     private ExpandableListView listview;
-    private Spinner year_list;
-    private ArrayList<String> yearList;
+    private Spinner yearSpinner;
+    private Map<String, ArrayList<StatMonth>> yearList;
 
     private String currentYear;
 
@@ -39,9 +39,8 @@ public class MeActivity extends AppCompatActivity {
         this.setTitle("내집통계");
 
         listview = findViewById(R.id.me_month_board);
-        year_list = findViewById(R.id.me_year_list);
-        this.monthList = new ArrayList<>();
-        this.yearList = new ArrayList<>();
+        yearSpinner = findViewById(R.id.me_year_list);
+        this.yearList = new HashMap<String, ArrayList<StatMonth>>();
 
         try {
             JSONObject userInfo = new JSONObject();
@@ -51,38 +50,36 @@ public class MeActivity extends AppCompatActivity {
                 @Override
                 protected void onPostExecute(JSONObject jsonObject) {
                     if (jsonObject == null) return;
-                    StatMonth month;
                     try {
                         JSONArray yearArray = jsonObject.getJSONArray("year");
                         for (int y = 0; y < yearArray.length(); y++) {
-                            JSONObject year = (JSONObject) yearArray.get(y);
-                            yearList.add(year.getString("num"));
-                            for (int m = 0; m < year.getJSONArray("month").length(); m++) {
-                                JSONObject monthArray = (JSONObject) year.getJSONArray("month").get(m);
-                                month = new StatMonth(
-                                        monthArray.getString("num") + "월",
-                                        monthArray.getString("weight") + "g",
-                                        monthArray.getString("fee") + "원"
+                            ArrayList<StatMonth> monthList = new ArrayList<>();
+                            JSONObject yearValue = (JSONObject) yearArray.get(y);
+                            for (int m = 0; m < yearValue.getJSONArray("month").length(); m++) {
+
+                                JSONObject monthValue = (JSONObject) yearValue.getJSONArray("month").get(m);
+                                StatMonth month = new StatMonth(
+                                        monthValue.getString("num") + "월",
+                                        monthValue.getString("weight") + "g",
+                                        monthValue.getString("fee") + "원"
                                 );
 
-                                for (int d = 0; d < monthArray.getJSONArray("day").length(); d++) {
-                                    JSONObject dayArray = (JSONObject) monthArray.getJSONArray("day").get(d);
+                                for (int d = 0; d < monthValue.getJSONArray("day").length(); d++) {
+                                    JSONObject dayValue = (JSONObject) monthValue.getJSONArray("day").get(d);
                                     month.addDay(
                                             new StatDay(
-                                                    dayArray.getString("num") + "일",
-                                                    dayArray.getString("weight") + "g",
-                                                    dayArray.getString("fee") + "원"
+                                                    dayValue.getString("num") + "일",
+                                                    dayValue.getString("weight") + "g",
+                                                    dayValue.getString("fee") + "원"
                                             )
                                     );
                                 }
                                 monthList.add(month);
                             }
+                            yearList.put(yearValue.getString("num"), monthList);
                         }
-
-                        ArrayAdapter spinnerAdapter = new ArrayAdapter(getApplicationContext(), R.layout.year_list_layout, yearList);
-                        MonthAdapter adapter = new MonthAdapter(getApplicationContext(),R.layout.stat_month_layout,R.layout.stat_day_layout,monthList);
-                        listview.setAdapter(adapter);
-                        year_list.setAdapter(spinnerAdapter);
+                        ArrayAdapter spinnerAdapter = new ArrayAdapter(getApplicationContext(), R.layout.year_list_layout, new ArrayList<>(yearList.keySet()));
+                        yearSpinner.setAdapter(spinnerAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -93,10 +90,12 @@ public class MeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        year_list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        yearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                currentYear = (String) year_list.getItemAtPosition(position);
+                currentYear = (String) yearSpinner.getItemAtPosition(position);
+                MonthAdapter adapter = new MonthAdapter(getApplicationContext(),R.layout.stat_month_layout,R.layout.stat_day_layout,yearList.get(currentYear));
+                listview.setAdapter(adapter);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -105,6 +104,5 @@ public class MeActivity extends AppCompatActivity {
         });
     }
     void find(View v){
-        System.out.println(yearList);
     }
 }
