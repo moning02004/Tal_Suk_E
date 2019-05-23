@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cookandroid.talsuke.R;
@@ -16,12 +17,11 @@ import com.cookandroid.talsuke.R;
 public class SettingRegInfoActivity extends AppCompatActivity {
 
     Switch regInfoSwitch;
-    EditText regInfoID;
+    TextView regInfoID;
     EditText regInfoPW1;
     EditText regInfoPW2;
     EditText regInfoName;
-    EditText regInfoAddress;
-    EditText regInfoAddressDetail;
+    EditText regInfoPhone;
     Button regInfoOK;
     Button regInfoCancel;
     ImageView regInfoSee;
@@ -34,12 +34,11 @@ public class SettingRegInfoActivity extends AppCompatActivity {
 
 
         regInfoSwitch = (Switch) findViewById(R.id.reg_info_switch);
-        regInfoID = (EditText) findViewById(R.id.reg_info_id);
+        regInfoID = (TextView) findViewById(R.id.reg_info_id);
         regInfoPW1 = (EditText) findViewById(R.id.reg_info_pw1);
         regInfoPW2 = (EditText) findViewById(R.id.reg_info_pw2);
         regInfoName = (EditText) findViewById(R.id.reg_info_name);
-        regInfoAddress = (EditText) findViewById(R.id.reg_info_address);
-        regInfoAddressDetail = (EditText) findViewById(R.id.reg_info_address_detail);
+        regInfoPhone = (EditText) findViewById(R.id.reg_info_phone);
         regInfoOK = (Button) findViewById(R.id.reg_info_ok);
         regInfoCancel = (Button) findViewById(R.id.reg_info_cancel);
         regInfoSee = (ImageView) findViewById(R.id.reg_info_see);
@@ -101,40 +100,29 @@ public class SettingRegInfoActivity extends AppCompatActivity {
 
     void setInfo() {
         regInfoID.setText("아이디");
-        regInfoPW1.setText("비번1");
-        regInfoPW2.setText("비번2");
         regInfoName.setText("이름");
-        regInfoAddress.setText("주소");
-        regInfoAddressDetail.setText("상세주소");
+        regInfoPhone.setText("주소");
     }
 
     void infoChangeTrue() {
-        regInfoID.setFocusableInTouchMode(true);
-        regInfoID.setFocusable(true);
         regInfoPW1.setFocusableInTouchMode(true);
         regInfoPW1.setFocusable(true);
         regInfoPW2.setFocusableInTouchMode(true);
         regInfoPW2.setFocusable(true);
         regInfoName.setFocusableInTouchMode(true);
         regInfoName.setFocusable(true);
-        regInfoAddress.setFocusableInTouchMode(true);
-        regInfoAddress.setFocusable(true);
-        regInfoAddressDetail.setFocusableInTouchMode(true);
-        regInfoAddressDetail.setFocusable(true);
+        regInfoPhone.setFocusableInTouchMode(true);
+        regInfoPhone.setFocusable(true);
     }
 
     void infoChangeFalse() {
-        regInfoID.setFocusableInTouchMode(false);
-        regInfoID.setFocusable(false);
         regInfoPW1.setFocusableInTouchMode(false);
         regInfoPW1.setFocusable(false);
         regInfoPW2.setFocusableInTouchMode(false);
         regInfoPW2.setFocusable(false);
         regInfoName.setFocusableInTouchMode(false);
         regInfoName.setFocusable(false);
-        regInfoAddress.setFocusableInTouchMode(false);
-        regInfoAddress.setFocusable(false);
-        regInfoAddressDetail.setFocusableInTouchMode(false);
-        regInfoAddressDetail.setFocusable(false);
+        regInfoPhone.setFocusableInTouchMode(false);
+        regInfoPhone.setFocusable(false);
     }
 }

@@ -1,42 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MeActivity">
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".Statistaics.MeActivity">
 
-    <ExpandableListView
-        android:id="@+id/me_month_board"
-        android:layout_width="match_parent"
-        android:layout_height="645dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
-        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:layout_marginTop="24dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="128dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Spinner
             android:id="@+id/me_year_list"
             android:layout_width="wrap_content"
-            android:layout_height="50sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="25dp"
+            android:layout_height="match_parent"
             android:layout_weight="9"
-
             android:background="#44ffaaaa"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/me_month_board"
@@ -46,14 +30,22 @@
         <Button
             android:id="@+id/btn_find"
             android:layout_width="wrap_content"
-
-            android:layout_height="50sp"
-            android:layout_marginEnd="20dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="find"
-            android:text="G O"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="16dp" />
+            android:text="G O"/>
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ExpandableListView
+            android:id="@+id/me_month_board"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+</LinearLayout>
