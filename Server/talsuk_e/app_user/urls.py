@@ -8,6 +8,7 @@ urlpatterns = [
     path('__register_/', views.register),
     path('__edit_/', views.edit),
     path('__check_/<str:pk>/', views.check),
-    path('__leave_/', views.leave)
+    path('__leave_/', views.leave),
+    path('__get_info_/', views.getInfo),
 ]
 

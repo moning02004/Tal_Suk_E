@@ -38,8 +38,5 @@ def me(request):
 
 
 def temp(request):
-<<<<<<< Updated upstream
     return JsonResponse({'message': 'OK'})
-=======
-    return JsonResponse({'message': 'OK'})
->>>>>>> Stashed changes
+

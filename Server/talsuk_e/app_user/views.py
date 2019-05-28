@@ -28,8 +28,7 @@ def register(request):
         suke = SukE()
         suke.user = user
         suke.name = data['name']
-        suke.address1 = data['address1']
-        suke.address2 = data['address2']
+        suke.phone = data['phone']
         suke.save()
         return JsonResponse({'message': 'Success'})
     except:
@@ -38,14 +37,19 @@ def register(request):
 
 @csrf_exempt
 def edit(request):
-    data = json.loads(request.body.encode('utf-8'))
+    data = json.loads(request.body.decode('utf-8'))
     try:
         user = User.objects.get(username=data['username'])
-        user.suke.name = data['name']
-        user.suke.phone = data['phone']
-        user.set_password(data['password']) if not data['password'] == '' else None
-        user.save()
-        return JsonResponse({'message': 'Success'})
+        print(user.check_password(data['current_password']))
+        if user.check_password(data['current_password']):
+            user.suke.name = data['name']
+            user.suke.phone = data['phone']
+            user.suke.save()
+            user.set_password(data['password']) if not data['password'] == '' else None
+            user.save()
+            return JsonResponse({'message': 'Success'})
+        else:
+            return JsonResponse({'message': 'Fail'})
     except:
         return JsonResponse({'message': 'Fail'})
 
@@ -62,7 +66,7 @@ def check(request, pk):
 @csrf_exempt
 def leave(request):
     try:
-        data = json.loads(request.body.encode('utf-8'))
+        data = json.loads(request.body.decode('utf-8'))
         username = data['username']
         user = User.objects.get(username=username)
         user.delete()
@@ -72,7 +76,11 @@ def leave(request):
     return JsonResponse({'message': message})
 
 
-<<<<<<< Updated upstream
+def getInfo(request):
+    data = json.loads(request.body.decode('utf-8'))
+    user = User.objects.get(username=data['username'])
+    user_info = dict()
+    user_info['name'] = user.suke.name
+    user_info['phone'] = user.suke.phone
 
-=======
->>>>>>> Stashed changes
+    return JsonResponse(user_info, safe=False)
