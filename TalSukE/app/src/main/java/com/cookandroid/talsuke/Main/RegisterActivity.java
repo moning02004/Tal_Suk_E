@@ -65,7 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
         } catch (JSONException e) {
             Toast.makeText(getApplicationContext(), "에러 발생", Toast.LENGTH_LONG).show();
         }
-
     }
 
     @SuppressLint("ShowToast")
@@ -111,5 +110,4 @@ public class RegisterActivity extends AppCompatActivity {
     boolean validateUsername(){
         return check.getText().equals("사용가능합니다.");
     }
-
 }

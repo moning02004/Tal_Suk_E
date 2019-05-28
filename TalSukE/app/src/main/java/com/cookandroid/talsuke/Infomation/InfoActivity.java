@@ -45,7 +45,6 @@ public class InfoActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.info_board);
 
-
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA);
         Date currentTime = new Date();
         final String dTime = currentTime.toString();
