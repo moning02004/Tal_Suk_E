@@ -12,4 +12,6 @@ public class Constant {
 
     public static final String INFO_INDEX_URL = "http://221.165.173.43:8000/info/__index_/";
     public static final String INFO_NEW_URL = "http://221.165.173.43:8000/info/__new_/";
+
+    public static final String ARDUINO_URL= "http://api.thingspeak.com/channels/785188/fields/1.json?api_key=ZERQ9BQEH3EGLFDY&results=1";
 }

@@ -113,10 +113,28 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     void update(View v) {
+        changeImot();
+        try {
+            @SuppressLint("StaticFieldLeak") JsonGetConnection jsonConnection = new JsonGetConnection(Constant.ARDUINO_URL){
+                @Override
+                protected void onPostExecute(JSONObject jsonObject) {
+                    try {
+                        JSONObject temp = (JSONObject) jsonObject.getJSONArray("feeds").get(0);
+                        System.out.println(temp.getString("field1"));
+                        fee.setText("무게 : " + temp.getString("field1") + "g  요금 : " );
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            jsonConnection.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    void dehydration(View v) {
-        changeImot();
+    void discharge(View v) {
+
     }
 
     void me(View v) {
