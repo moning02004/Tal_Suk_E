@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="71090b78-defc-451f-a32a-fc4f11491cd7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talsuk_e/app_statistics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_statistics/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talsuk_e/app_user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talsuk_e/app_user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_user/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talsuk_e/app_user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Main/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Main/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Settings/SettingRegInfoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Settings/SettingRegInfoActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/res/layout/activity_setting_reg_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/res/layout/activity_setting_reg_info.xml" afterDir="false" />
     </list>
@@ -33,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/talsuk_e/app_user/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="483">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -180,7 +177,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19352709" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -367,8 +363,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/talsuk_e/app_user/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="483">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>

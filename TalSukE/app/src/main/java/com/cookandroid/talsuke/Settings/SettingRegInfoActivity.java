@@ -43,7 +43,6 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_reg_info);
 
-
         regInfoSwitch = (Switch) findViewById(R.id.reg_info_switch);
         regInfoID = (TextView) findViewById(R.id.reg_info_id);
         regInfoPW1 = (EditText) findViewById(R.id.reg_info_pw1);
@@ -59,25 +58,11 @@ public class SettingRegInfoActivity extends AppCompatActivity {
 
         setInfo();
 
-        regInfoSwitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (regInfoSwitch.isChecked()) {
-                    infoChangeTrue();
-                } else {
-                    infoChangeFalse();
-                }
-            }
-
-
-        });
-
         regInfoOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!regInfoPW1.getText().toString().equals(regInfoPW2.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-                    return;
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SettingRegInfoActivity.this);
                     builder.setCancelable(true);
@@ -105,6 +90,7 @@ public class SettingRegInfoActivity extends AppCompatActivity {
                                                 try {
                                                     if(jsonObject.getString("message").equals("Success")){
                                                         Toast.makeText(getApplicationContext(), "변경되었습니다.", Toast.LENGTH_SHORT).show();
+                                                        finish();
                                                     }else{
                                                         Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
                                                     }
@@ -117,16 +103,6 @@ public class SettingRegInfoActivity extends AppCompatActivity {
                                     } catch (IOException | JSONException e) {
                                         e.printStackTrace();
                                     }
-                                    // 현재 비밀번호와 같은지 Check
-                                    /* if(PW.getText().toString().equals(" 현재 비밀 번호 서버에서 받아옴 " ){
-                                            ID,Name,PW,Phone 변경
-                                            finish();
-                                       }else{
-                                        Toast.makeText(getApplicationContext(), "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    */
-
-
                                 }
                             });
                     builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -137,7 +113,6 @@ public class SettingRegInfoActivity extends AppCompatActivity {
                     });
                     AlertDialog dialog = builder.create();
                     dialog.show();
-
                 }
             }
         });
@@ -168,9 +143,26 @@ public class SettingRegInfoActivity extends AppCompatActivity {
     }
 
     void setInfo() {
-        regInfoID.setText("아이디");
-        regInfoName.setText("이름");
-        regInfoPhone.setText("주소");
+        try {
+            String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
+            JSONObject userInfo = new JSONObject();
+            userInfo.put("username", username);
+            @SuppressLint("StaticFieldLeak") JsonConnection connection = new JsonConnection(Constant.GET_INFO) {
+                @Override
+                protected void onPostExecute(JSONObject jsonObject) {
+                    try {
+                        regInfoID.setText(jsonObject.getString("username").toString());
+                        regInfoName.setText(jsonObject.getString("name").toString());
+                        regInfoPhone.setText(jsonObject.getString("phone").toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            connection.execute(userInfo);
+        } catch (IOException | JSONException e){
+            e.printStackTrace();
+        }
     }
 
     void infoChangeTrue() {
@@ -193,5 +185,10 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         regInfoName.setFocusable(false);
         regInfoPhone.setFocusableInTouchMode(false);
         regInfoPhone.setFocusable(false);
+    }
+
+    void toggle(View v) {
+        if (regInfoSwitch.isChecked()) infoChangeTrue();
+        else infoChangeFalse();
     }
 }
