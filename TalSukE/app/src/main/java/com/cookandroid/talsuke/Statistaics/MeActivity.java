@@ -36,7 +36,7 @@ public class MeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me);
-        this.setTitle("내집통계");
+        this.setTitle("내집 통계");
 
         listview = findViewById(R.id.me_month_board);
         yearSpinner = findViewById(R.id.me_year_list);

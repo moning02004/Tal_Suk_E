@@ -27,6 +27,7 @@ public class InfoNewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_new);
+        this.setTitle("공지사항 작성");
 
         editTitle = (EditText) findViewById(R.id.info_edit_title);
         editContent = (EditText) findViewById(R.id.info_edit_content);

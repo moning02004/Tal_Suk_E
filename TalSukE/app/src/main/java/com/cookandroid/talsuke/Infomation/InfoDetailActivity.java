@@ -13,6 +13,7 @@ public class InfoDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_clicked);
+        this.setTitle("공지사항");
 
         TextView title = (TextView) findViewById(R.id.info_clicked_title);
         TextView date = (TextView) findViewById(R.id.info_clicked_date);

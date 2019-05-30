@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.cookandroid.talsuke.Main.Constant;
 import com.cookandroid.talsuke.Main.JsonConnection;
+import com.cookandroid.talsuke.Main.MainActivity;
 import com.cookandroid.talsuke.R;
 
 import org.json.JSONException;
@@ -32,6 +33,7 @@ public class SettingRegDelActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_reg_del);
+        this.setTitle("회원 탈퇴");
 
         regDelOK = (Button) findViewById(R.id.reg_del_ok);
         regDelCancel = (Button) findViewById(R.id.reg_del_cancel);
@@ -57,12 +59,21 @@ public class SettingRegDelActivity extends AppCompatActivity {
                                     @Override
                                     protected void onPostExecute(JSONObject jsonObject) {
                                         System.out.println(jsonObject);
-                                        if (jsonObject != null) {
-                                            SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
-                                            editor.remove("username");
-                                            editor.remove("fee");
-                                            editor.apply();
-                                            finish();
+                                        try {
+                                            if (jsonObject.getString("message").equals("Success")) {
+                                                SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
+                                                editor.remove("username");
+                                                editor.remove("fee");
+                                                editor.apply();
+                                                Toast.makeText(getApplicationContext(), "회원 정보가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
+                                            }else{
+                                                Toast.makeText(getApplicationContext(), "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
                                         }
                                     }
                                 };
