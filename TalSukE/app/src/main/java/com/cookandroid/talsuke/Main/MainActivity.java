@@ -1,6 +1,7 @@
 package com.cookandroid.talsuke.Main;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +16,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private EditText username;
     private EditText userpw;
+    public static ArrayList<Activity> actList = new ArrayList<Activity>();
 
     @SuppressLint("ShowToast")
     @Override
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     } else if (jsonObject.getString("message").equals("Success")) {
                         SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
                         editor.putString("username", username.getText().toString());
+                        editor.putString("permission", jsonObject.getString("permission"));
                         editor.putString("fee", jsonObject.getString("fee"));
                         editor.apply();
 

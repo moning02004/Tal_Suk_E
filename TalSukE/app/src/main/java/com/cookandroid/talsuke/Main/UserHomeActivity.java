@@ -68,13 +68,7 @@ public class UserHomeActivity extends AppCompatActivity {
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         getWeight();
-        changeImot();
 
     }
 
@@ -116,22 +110,39 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
     void discharge(View v) {
-        try {
-            JSONObject dayWeight = new JSONObject();
-            dayWeight.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
-            dayWeight.put("weight", currentWeight);
-            dayWeight.put("fee", current_Fee);
+        AlertDialog.Builder builder = new AlertDialog.Builder(UserHomeActivity.this);
+        builder.setCancelable(true);
+        builder.setTitle("배출 확인");
+        builder.setMessage("배출이십니까?");
+        builder.setPositiveButton("확인",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            JSONObject dayWeight = new JSONObject();
+                            dayWeight.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
+                            dayWeight.put("weight", currentWeight);
+                            dayWeight.put("fee", current_Fee);
 
-            @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.STATISTICS_ADD){
-                @Override
-                protected void onPostExecute(JSONObject jsonObject) {
-                    Toast.makeText(getApplicationContext(), "성공적으로 저장되었습니다.", Toast.LENGTH_LONG).show();
-                }
-            };
-            jsonConnection.execute(dayWeight);
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
+                            @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.STATISTICS_ADD){
+                                @Override
+                                protected void onPostExecute(JSONObject jsonObject) {
+                                    Toast.makeText(getApplicationContext(), "성공적으로 저장되었습니다.", Toast.LENGTH_LONG).show();
+                                }
+                            };
+                            jsonConnection.execute(dayWeight);
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     void me(View v) {

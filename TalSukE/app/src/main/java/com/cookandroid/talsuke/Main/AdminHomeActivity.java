@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.cookandroid.talsuke.Infomation.InfoActivity;
+import com.cookandroid.talsuke.Infomation.UserInfoActivity;
+import com.cookandroid.talsuke.Infomation.UserInfoClickedActivity;
 import com.cookandroid.talsuke.R;
 
 public class AdminHomeActivity extends AppCompatActivity {
@@ -18,6 +20,7 @@ public class AdminHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
+        this.setTitle("관리자 페이지");
 
     }
 
@@ -44,7 +47,8 @@ public class AdminHomeActivity extends AppCompatActivity {
     }
 
     void show_suke(View v) {
-
+        Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
+        startActivity(intent);
     }
 
     void logout(View v) {

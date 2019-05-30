@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main.AdminHomeActivity"></activity>
+        <activity android:name=".Infomation.UserInfoClickedActivity"></activity>
+        <activity android:name=".Infomation.UserInfoActivity" />
+        <activity android:name=".Main.AdminHomeActivity" />
         <activity android:name=".Statistaics.MeActivity" />
         <activity android:name=".Main.RegisterActivity" />
         <activity android:name=".Main.MainActivity">
@@ -23,12 +25,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main.UserHomeActivity" />
-        <activity android:name="com.cookandroid.talsuke.Settings.SettingActivity" />
-        <activity android:name="com.cookandroid.talsuke.Settings.SettingRegDelActivity" />
-        <activity android:name="com.cookandroid.talsuke.Settings.SettingRegInfoActivity" />
-        <activity android:name="com.cookandroid.talsuke.Infomation.InfoDetailActivity" />
-        <activity android:name="com.cookandroid.talsuke.Infomation.InfoNewActivity" />
-        <activity android:name="com.cookandroid.talsuke.Infomation.InfoActivity" />
+        <activity android:name=".Settings.SettingActivity" />
+        <activity android:name=".Settings.SettingRegDelActivity" />
+        <activity android:name=".Settings.SettingRegInfoActivity" />
+        <activity android:name=".Infomation.InfoDetailActivity" />
+        <activity android:name=".Infomation.InfoNewActivity" />
+        <activity android:name=".Infomation.InfoActivity" />
     </application>
 
 </manifest>

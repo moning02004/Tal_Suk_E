@@ -35,15 +35,13 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        this.setTitle("정보 게시판");
+        this.setTitle("공지사항");
 
         String permission = getSharedPreferences("SESSION", MODE_PRIVATE).getString("permission", "");
         if (permission!= null && permission.equals("user")){
             Button new_btn = findViewById(R.id.info_new_btn);
-            new_btn.setVisibility(View.INVISIBLE);
+            new_btn.setVisibility(View.GONE);
         }
-
-        listView = findViewById(R.id.info_board);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA);
         Date currentTime = new Date();

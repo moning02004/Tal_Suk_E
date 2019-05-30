@@ -22,7 +22,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        this.setTitle("Setting");
+        this.setTitle("설정");
     }
 
     void logout(View v) {
@@ -35,7 +35,7 @@ public class SettingActivity extends AppCompatActivity {
 
     void regDelete(View v) {
         Intent intent = new Intent(getApplicationContext(), SettingRegDelActivity.class);
-        startActivityForResult(intent, 404);
+        startActivity(intent);
     }
 
     void regInfo(View v) {
@@ -72,13 +72,5 @@ public class SettingActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_CANCELED) {
-            if (requestCode == 404) {
-                finish();
-            }
-        }
-    }
 }
+

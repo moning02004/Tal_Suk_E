@@ -33,6 +33,7 @@ public class SettingRegInfoActivity extends AppCompatActivity {
     EditText regInfoPW2;
     EditText regInfoName;
     EditText regInfoPhone;
+    EditText regInfoFee;
     Button regInfoOK;
     Button regInfoCancel;
     ImageView regInfoSee;
@@ -42,6 +43,7 @@ public class SettingRegInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_reg_info);
+        this.setTitle("회원 정보");
 
         regInfoSwitch = (Switch) findViewById(R.id.reg_info_switch);
         regInfoID = (TextView) findViewById(R.id.reg_info_id);
@@ -49,6 +51,7 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         regInfoPW2 = (EditText) findViewById(R.id.reg_info_pw2);
         regInfoName = (EditText) findViewById(R.id.reg_info_name);
         regInfoPhone = (EditText) findViewById(R.id.reg_info_phone);
+        regInfoFee = (EditText) findViewById(R.id.reg_info_fee);
         regInfoOK = (Button) findViewById(R.id.reg_info_ok);
         regInfoCancel = (Button) findViewById(R.id.reg_info_cancel);
         regInfoSee = (ImageView) findViewById(R.id.reg_info_see);
@@ -131,11 +134,13 @@ public class SettingRegInfoActivity extends AppCompatActivity {
                     regInfoSee.setImageResource(R.drawable.see1);
                     regInfoPW1.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     regInfoPW2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    regInfoFee.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     regInfoSeeCheck = false;
                 } else {
                     regInfoSee.setImageResource(R.drawable.see2);
                     regInfoPW1.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     regInfoPW2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    regInfoFee.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     regInfoSeeCheck = true;
                 }
             }
@@ -174,6 +179,8 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         regInfoName.setFocusable(true);
         regInfoPhone.setFocusableInTouchMode(true);
         regInfoPhone.setFocusable(true);
+        regInfoFee.setFocusableInTouchMode(true);
+        regInfoFee.setFocusable(true);
     }
 
     void infoChangeFalse() {
@@ -185,6 +192,8 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         regInfoName.setFocusable(false);
         regInfoPhone.setFocusableInTouchMode(false);
         regInfoPhone.setFocusable(false);
+        regInfoFee.setFocusableInTouchMode(false);
+        regInfoFee.setFocusable(false);
     }
 
     void toggle(View v) {
