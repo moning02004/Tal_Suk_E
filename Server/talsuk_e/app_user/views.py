@@ -83,17 +83,13 @@ def leave(request):
 
 
 def getInfo(request):
-    data = json.loads(request.body.decode('utf-8'))
-    user = User.objects.get(username=data['username'])
-    user_info = dict()
-    user_info['name'] = user.suke.name
-    user_info['phone'] = user.suke.phone
-    user_info['fee'] = user.suke.fee
-<<<<<<< Updated upstream
-
-    return JsonResponse(user_info, safe=False)
-=======
-
-    return JsonResponse(user_info, safe=False)
-
->>>>>>> Stashed changes
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+        user = User.objects.get(username=data['username'])
+        user_info = dict()
+        user_info['name'] = user.suke.name
+        user_info['phone'] = user.suke.phone
+        user_info['fee'] = user.suke.fee
+        return JsonResponse(user_info, safe=False)
+    except:
+        return JsonResponse({'message': 'Fail'})

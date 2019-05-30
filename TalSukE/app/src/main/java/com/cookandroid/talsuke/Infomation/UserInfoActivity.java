@@ -37,36 +37,25 @@ public class UserInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_info);
         this.setTitle("회원 정보");
 
-
         listView = findViewById(R.id.info_user_board);
-        data = new ArrayList<>();
-        data = new ArrayList<InfoUserItem>();
-        data.add(new InfoUserItem("qwㄴㅇㄹeqwe","qweqwe","1123"));
-        data.add(new InfoUserItem("qwㄴㅇㄹeaqwe","qweaqwe","11123"));
-        data.add(new InfoUserItem("qwㄴㅇㄹaeqdwe","qdwaeqwe","111123"));
 
-
-        InfoUserAdapter adapter = new InfoUserAdapter(getApplicationContext(), R.layout.activity_user_info_item, data);
-        listView.setAdapter(adapter);
-        /*
         try {
             JSONObject info = new JSONObject();
             info.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
 
-            @SuppressLint("StaticFieldLeak") JsonConnection JsonConnection = new JsonConnection(Constant.INFO_INDEX_URL) {
+            @SuppressLint("StaticFieldLeak") JsonConnection JsonConnection = new JsonConnection(Constant.USER_ALL) {
                 protected void onPostExecute(JSONObject jsonObject) {
                     System.out.println(jsonObject);
                     if (jsonObject == null) return;
 
-
                     data = new ArrayList<InfoUserItem>();
                     try {
-                        JSONArray userInfoList = jsonObject.getJSONArray("userinfo");
+                        JSONArray userInfoList = jsonObject.getJSONArray("user_info");
                         for (int i=0; i<userInfoList.length(); i++) {
                             data.add(new InfoUserItem(
-                                    ((JSONObject) userInfoList.get(i)).getString("title"),
-                                    ((JSONObject) userInfoList.get(i)).getString("created"),
-                                    ((JSONObject) userInfoList.get(i)).getString("content")
+                                    ((JSONObject) userInfoList.get(i)).getString("username"),
+                                    ((JSONObject) userInfoList.get(i)).getString("name"),
+                                    ((JSONObject) userInfoList.get(i)).getString("phone")
                             ));
                         }
                         InfoUserAdapter adapter = new InfoUserAdapter(getApplicationContext(), R.layout.activity_user_info_item, data);
@@ -79,7 +68,7 @@ public class UserInfoActivity extends AppCompatActivity {
             JsonConnection.execute(info);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
-        }*/
+        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

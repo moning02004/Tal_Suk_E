@@ -26,16 +26,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class SettingRegInfoActivity extends AppCompatActivity {
-
-    Switch regInfoSwitch;
-    TextView regInfoID;
-    EditText regInfoPW1;
-    EditText regInfoPW2;
-    EditText regInfoName;
-    EditText regInfoPhone;
-    EditText regInfoFee;
-    Button regInfoOK;
-    Button regInfoCancel;
+    private Switch regInfoSwitch;
+    private TextView regInfoID;
+    private EditText regInfoPW1, regInfoPW2, regInfoName, regInfoPhone, regInfoFee;
     ImageView regInfoSee;
     Boolean regInfoSeeCheck = true;
 
@@ -52,102 +45,10 @@ public class SettingRegInfoActivity extends AppCompatActivity {
         regInfoName = (EditText) findViewById(R.id.reg_info_name);
         regInfoPhone = (EditText) findViewById(R.id.reg_info_phone);
         regInfoFee = (EditText) findViewById(R.id.reg_info_fee);
-        regInfoOK = (Button) findViewById(R.id.reg_info_ok);
-        regInfoCancel = (Button) findViewById(R.id.reg_info_cancel);
-        regInfoSee = (ImageView) findViewById(R.id.reg_info_see);
 
         regInfoPW1.setTransformationMethod(PasswordTransformationMethod.getInstance());
         regInfoPW2.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
-        setInfo();
-
-        regInfoOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!regInfoPW1.getText().toString().equals(regInfoPW2.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-                } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(SettingRegInfoActivity.this);
-                    builder.setCancelable(true);
-                    builder.setTitle("회원 정보 수정");
-                    builder.setMessage("현재 비밀번호를 입력해 주세요.");
-                    final EditText PW = new EditText(SettingRegInfoActivity.this);
-                    PW.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    builder.setView(PW);
-                    builder.setPositiveButton("확인",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    JSONObject jsonObject = new JSONObject();
-                                    System.out.println(PW.getText().toString());
-                                    try {
-                                        jsonObject.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
-                                        jsonObject.put("password", regInfoPW1.getText().toString());
-                                        jsonObject.put("current_password", PW.getText().toString());
-                                        jsonObject.put("name", regInfoName.getText().toString());
-                                        jsonObject.put("phone", regInfoPhone.getText().toString());
-                                        @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.EDIT_URL){
-                                            @Override
-                                            protected void onPostExecute(JSONObject jsonObject) {
-                                                if(jsonObject == null ) return;
-                                                try {
-                                                    if(jsonObject.getString("message").equals("Success")){
-                                                        Toast.makeText(getApplicationContext(), "변경되었습니다.", Toast.LENGTH_SHORT).show();
-                                                        finish();
-                                                    }else{
-                                                        Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                } catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-                                        };
-                                        jsonConnection.execute(jsonObject);
-                                    } catch (IOException | JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-            }
-        });
-
-        regInfoCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        regInfoSee.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                if (regInfoSeeCheck == true) {
-                    regInfoSee.setImageResource(R.drawable.see1);
-                    regInfoPW1.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    regInfoPW2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    regInfoFee.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    regInfoSeeCheck = false;
-                } else {
-                    regInfoSee.setImageResource(R.drawable.see2);
-                    regInfoPW1.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    regInfoPW2.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    regInfoFee.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    regInfoSeeCheck = true;
-                }
-            }
-        });
-    }
-
-    void setInfo() {
         try {
             String username = getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", "");
             JSONObject userInfo = new JSONObject();
@@ -156,9 +57,10 @@ public class SettingRegInfoActivity extends AppCompatActivity {
                 @Override
                 protected void onPostExecute(JSONObject jsonObject) {
                     try {
-                        regInfoID.setText(jsonObject.getString("username").toString());
+                        regInfoID.setText(getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
                         regInfoName.setText(jsonObject.getString("name").toString());
                         regInfoPhone.setText(jsonObject.getString("phone").toString());
+                        regInfoFee.setText(jsonObject.getString("fee").toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -169,35 +71,88 @@ public class SettingRegInfoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-    void infoChangeTrue() {
-        regInfoPW1.setFocusableInTouchMode(true);
-        regInfoPW1.setFocusable(true);
-        regInfoPW2.setFocusableInTouchMode(true);
-        regInfoPW2.setFocusable(true);
-        regInfoName.setFocusableInTouchMode(true);
-        regInfoName.setFocusable(true);
-        regInfoPhone.setFocusableInTouchMode(true);
-        regInfoPhone.setFocusable(true);
-        regInfoFee.setFocusableInTouchMode(true);
-        regInfoFee.setFocusable(true);
+    void buttonOK(View v) {
+        if (!regInfoPW1.getText().toString().equals(regInfoPW2.getText().toString())) {
+            Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(SettingRegInfoActivity.this);
+            builder.setCancelable(true);
+            builder.setTitle("회원 정보 수정");
+            builder.setMessage("현재 비밀번호를 입력해 주세요.");
+            final EditText PW = new EditText(SettingRegInfoActivity.this);
+            PW.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            builder.setView(PW);
+            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
+                        jsonObject.put("password", regInfoPW1.getText().toString());
+                        jsonObject.put("current_password", PW.getText().toString());
+                        jsonObject.put("name", regInfoName.getText().toString());
+                        jsonObject.put("phone", regInfoPhone.getText().toString());
+                        jsonObject.put("fee", getSharedPreferences("SESSION", MODE_PRIVATE).getString("fee", "0"));
+                        @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.EDIT_URL){
+                            @Override
+                            protected void onPostExecute(JSONObject jsonObject) {
+                                if(jsonObject == null ) return;
+                                try {
+                                    if(jsonObject.getString("message").equals("Success")){
+                                        Toast.makeText(getApplicationContext(), "변경되었습니다.", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        };
+                        jsonConnection.execute(jsonObject);
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
     }
-
-    void infoChangeFalse() {
-        regInfoPW1.setFocusableInTouchMode(false);
-        regInfoPW1.setFocusable(false);
-        regInfoPW2.setFocusableInTouchMode(false);
-        regInfoPW2.setFocusable(false);
-        regInfoName.setFocusableInTouchMode(false);
-        regInfoName.setFocusable(false);
-        regInfoPhone.setFocusableInTouchMode(false);
-        regInfoPhone.setFocusable(false);
-        regInfoFee.setFocusableInTouchMode(false);
-        regInfoFee.setFocusable(false);
+    void buttonCancel(View v) {
+        finish();
+    }
+    void showPW(View v) {
+        if (regInfoSeeCheck) {
+            regInfoSee.setImageResource(R.drawable.see1);
+            regInfoPW1.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            regInfoPW2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            regInfoSeeCheck = false;
+        } else {
+            regInfoSee.setImageResource(R.drawable.see2);
+            regInfoPW1.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            regInfoPW2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            regInfoSeeCheck = true;
+        }
     }
 
     void toggle(View v) {
-        if (regInfoSwitch.isChecked()) infoChangeTrue();
-        else infoChangeFalse();
+        boolean isChecked = regInfoSwitch.isChecked();
+        regInfoPW1.setFocusableInTouchMode(isChecked);
+        regInfoPW1.setFocusable(isChecked);
+        regInfoPW2.setFocusableInTouchMode(isChecked);
+        regInfoPW2.setFocusable(isChecked);
+        regInfoName.setFocusableInTouchMode(isChecked);
+        regInfoName.setFocusable(isChecked);
+        regInfoPhone.setFocusableInTouchMode(isChecked);
+        regInfoPhone.setFocusable(isChecked);
+        regInfoFee.setFocusableInTouchMode(isChecked);
+        regInfoFee.setFocusable(isChecked);
     }
 }
