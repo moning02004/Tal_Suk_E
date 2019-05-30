@@ -3,12 +3,14 @@ package com.cookandroid.talsuke.Settings;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.cookandroid.talsuke.Main.AdminHomeActivity;
 import com.cookandroid.talsuke.R;
@@ -26,13 +28,14 @@ public class SettingActivity extends AppCompatActivity {
     void logout(View v) {
         SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
         editor.remove("username");
+        editor.remove("fee");
         editor.apply();
         finish();
     }
 
     void regDelete(View v) {
         Intent intent = new Intent(getApplicationContext(), SettingRegDelActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 404);
     }
 
     void regInfo(View v) {
@@ -68,5 +71,14 @@ public class SettingActivity extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (resultCode == RESULT_CANCELED) {
+            if (requestCode == 404) {
+                finish();
+            }
+        }
     }
 }

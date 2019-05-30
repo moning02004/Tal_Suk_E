@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="한번 더 입력하세요."
-        android:inputType="phone"
+        android:inputType="textPassword"
         android:textColor="@android:color/black"
         android:textColorHighlight="@android:color/black"
         android:textColorHint="@android:color/black" />
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="핸드폰 번호를 입력하세요."
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:textColor="@android:color/black"
         android:textColorHighlight="@android:color/black"
         android:textColorHint="@android:color/black" />

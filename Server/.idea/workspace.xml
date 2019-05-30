@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="71090b78-defc-451f-a32a-fc4f11491cd7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Main/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Main/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Settings/SettingRegInfoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/java/com/cookandroid/talsuke/Settings/SettingRegInfoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TalSukE/app/src/main/res/layout/activity_setting_reg_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TalSukE/app/src/main/res/layout/activity_setting_reg_info.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talsuk_e/app_user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talsuk_e/app_user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/talsuk_e/app_user/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/talsuk_e/app_user/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" selection-end-line="14" />
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -30,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/talsuk_e/app_user/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="534">
+              <caret line="87" column="9" lean-forward="true" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -42,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/talsuk_e/app_user/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -86,8 +85,8 @@
         <option value="$PROJECT_DIR$/talsuk_e/app_statistics/urls.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_info/views.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_statistics/views.py" />
-        <option value="$PROJECT_DIR$/talsuk_e/app_user/models.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_user/urls.py" />
+        <option value="$PROJECT_DIR$/talsuk_e/app_user/models.py" />
         <option value="$PROJECT_DIR$/talsuk_e/app_user/views.py" />
       </list>
     </option>
@@ -343,8 +342,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/talsuk_e/app_user/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
@@ -353,8 +352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/talsuk_e/app_user/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-end-line="14" />
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -363,8 +362,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/talsuk_e/app_user/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="534">
+          <caret line="87" column="9" lean-forward="true" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>

@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     } else if (jsonObject.getString("message").equals("Success")) {
                         SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
                         editor.putString("username", username.getText().toString());
-                        editor.putString("permission", jsonObject.getString("permission"));
+                        editor.putString("fee", jsonObject.getString("fee"));
                         editor.apply();
 
                         Intent intent = new Intent();

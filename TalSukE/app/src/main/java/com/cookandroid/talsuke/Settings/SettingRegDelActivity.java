@@ -1,7 +1,9 @@
 package com.cookandroid.talsuke.Settings;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +12,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.cookandroid.talsuke.Main.Constant;
+import com.cookandroid.talsuke.Main.JsonConnection;
 import com.cookandroid.talsuke.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class SettingRegDelActivity extends AppCompatActivity {
 
@@ -40,7 +49,27 @@ public class SettingRegDelActivity extends AppCompatActivity {
                     ((AlertDialog.Builder) builder).setPositiveButton("삭제하기", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //비밀번호가 같은지 확인하고 같다면 회원을 삭제함.
+                            try {
+                                JSONObject userInfo = new JSONObject();
+                                userInfo.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
+                                userInfo.put("password", regDelPW.getText().toString());
+                                @SuppressLint("StaticFieldLeak") JsonConnection connection = new JsonConnection(Constant.LEAVE_URL){
+                                    @Override
+                                    protected void onPostExecute(JSONObject jsonObject) {
+                                        System.out.println(jsonObject);
+                                        if (jsonObject != null) {
+                                            SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
+                                            editor.remove("username");
+                                            editor.remove("fee");
+                                            editor.apply();
+                                            finish();
+                                        }
+                                    }
+                                };
+                                connection.execute(userInfo);
+                            } catch (IOException | JSONException e) {
+                                e.printStackTrace();
+                            }
                             finish();
                         }
                     });

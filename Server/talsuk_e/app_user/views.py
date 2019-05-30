@@ -44,6 +44,7 @@ def edit(request):
         if user.check_password(data['current_password']):
             user.suke.name = data['name']
             user.suke.phone = data['phone']
+            user.suke.phone = data['fee']
             user.suke.save()
             user.set_password(data['password']) if not data['password'] == '' else None
             user.save()
@@ -82,5 +83,6 @@ def getInfo(request):
     user_info = dict()
     user_info['name'] = user.suke.name
     user_info['phone'] = user.suke.phone
+    user_info['fee'] = user.suke.fee
 
     return JsonResponse(user_info, safe=False)
