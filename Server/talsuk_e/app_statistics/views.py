@@ -3,7 +3,8 @@ from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
-from .models import Year
+from .models import Year, Month, Day
+from datetime import datetime
 import json
 
 
@@ -37,6 +38,20 @@ def me(request):
     return JsonResponse(total_stat, safe=False)
 
 
-def temp(request):
+@csrf_exempt
+def add(request):
+    data = json.loads(request.body.decode('utf-8'))
+    today = datetime.now()
+
+    user = User.objects.get(username=User.objects.get(username=data['username']))
+    year = Year(user=user, num=today.year) if not today.year in [x.num for x in user.year_set.all()] else user.year_set.get(num=today.year)
+    year.save()
+    
+    month = Month(year=year, num=today.month) if not today.month in [x.num for x in year.month_set.all()] else year.month_set.get(num=today.month)
+    month.save()
+    
+    day = Day(month=month, num=today.day, weight=int(data['weight']), fee=int(data['fee'])) if not today.day in [x.num for x in month.day_set.all()] else month.day_set.get(num=today.day)
+    day.save()
+
     return JsonResponse({'message': 'OK'})
 

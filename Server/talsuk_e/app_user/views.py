@@ -10,11 +10,14 @@ import json
 def login(request):
     data = json.loads(request.body.decode('utf-8'))
     username = data['username']
-    if SukE.objects.all().filter(user=User.objects.get(username=username)).exists():
-        suke = SukE.objects.get(user=User.objects.get(username=username))
-        if suke.user.check_password(data['password']):
-            return JsonResponse({'permission': 'admin' if suke.user.is_superuser else 'user' , 'message': 'Success'})
-    return JsonResponse({'message': 'Fail'})
+    print(username)
+    try:
+        if SukE.objects.all().filter(user=User.objects.get(username=username)).exists():
+            suke = SukE.objects.get(user=User.objects.get(username=username))
+            if suke.user.check_password(data['password']):
+                return JsonResponse({'permission': 'admin' if suke.user.is_superuser else 'user', 'message': 'Success','fee':suke.fee})
+    except:
+        return JsonResponse({'message': 'Fail'})
 
 
 @csrf_exempt
@@ -68,10 +71,12 @@ def check(request, pk):
 def leave(request):
     try:
         data = json.loads(request.body.decode('utf-8'))
-        username = data['username']
-        user = User.objects.get(username=username)
-        user.delete()
-        message = 'Success'
+        user = User.objects.get(username=data['username'])
+        if user.check_password(data['password']):
+            user.delete()
+            message = 'Success'
+        else:
+            message = 'Fail'
     except:
         message = 'Fail'
     return JsonResponse({'message': message})
@@ -84,5 +89,11 @@ def getInfo(request):
     user_info['name'] = user.suke.name
     user_info['phone'] = user.suke.phone
     user_info['fee'] = user.suke.fee
+<<<<<<< Updated upstream
 
     return JsonResponse(user_info, safe=False)
+=======
+
+    return JsonResponse(user_info, safe=False)
+
+>>>>>>> Stashed changes
