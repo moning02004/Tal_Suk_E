@@ -20,19 +20,16 @@
             android:id="@+id/me_year_list"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="9"
+            android:layout_weight="3"
             android:background="#44ffaaaa"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/me_month_board"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center"/>
 
         <Button
             android:id="@+id/btn_find"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:visibility="invisible"
             android:layout_weight="1"
-            android:onClick="find"
             android:text="G O"/>
     </LinearLayout>
 

@@ -2,6 +2,7 @@ package com.cookandroid.talsuke.Settings;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,13 +93,16 @@ public class SettingRegInfoActivity extends AppCompatActivity {
                         jsonObject.put("current_password", PW.getText().toString());
                         jsonObject.put("name", regInfoName.getText().toString());
                         jsonObject.put("phone", regInfoPhone.getText().toString());
-                        jsonObject.put("fee", getSharedPreferences("SESSION", MODE_PRIVATE).getString("fee", "0"));
+                        jsonObject.put("fee", regInfoFee.getText().toString());
                         @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.EDIT_URL){
                             @Override
                             protected void onPostExecute(JSONObject jsonObject) {
                                 if(jsonObject == null ) return;
                                 try {
                                     if(jsonObject.getString("message").equals("Success")){
+                                        SharedPreferences.Editor editor = getSharedPreferences("SESSION", MODE_PRIVATE).edit();
+                                        editor.putString("fee", regInfoFee.getText().toString());
+                                        editor.apply();
                                         Toast.makeText(getApplicationContext(), "변경되었습니다.", Toast.LENGTH_SHORT).show();
                                         finish();
                                     }else{
@@ -107,7 +111,7 @@ public class SettingRegInfoActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-                            }
+                        }
                         };
                         jsonConnection.execute(jsonObject);
                     } catch (IOException | JSONException e) {
