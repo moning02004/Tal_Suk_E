@@ -26,7 +26,8 @@ import java.io.IOException;
 public class UserHomeActivity extends AppCompatActivity {
     int totalWeight;
     int currentWeight;
-    double current_Fee;
+    int tempFee;
+    double currentFee;
     ImageView imot;
     TextView fee;
 
@@ -74,10 +75,10 @@ public class UserHomeActivity extends AppCompatActivity {
 
     void changeImot() {
         if(totalWeight==0) imot.setImageResource(R.drawable.status0);
-        else if(totalWeight>0 && totalWeight<=12000) imot.setImageResource(R.drawable.status1);
-        else if(totalWeight>12000 && totalWeight<=24000) imot.setImageResource(R.drawable.status2);
-        else if(totalWeight>24000 && totalWeight<=36000) imot.setImageResource(R.drawable.status3);
-        else if(totalWeight>36000 && totalWeight<=48000) imot.setImageResource(R.drawable.status4);
+        else if(totalWeight>0 && totalWeight<=3000) imot.setImageResource(R.drawable.status1);
+        else if(totalWeight>3000 && totalWeight<=6000) imot.setImageResource(R.drawable.status2);
+        else if(totalWeight>6000 && totalWeight<=9000) imot.setImageResource(R.drawable.status3);
+        else if(totalWeight>9000 && totalWeight<=12000) imot.setImageResource(R.drawable.status4);
         else imot.setImageResource(R.drawable.status5);
 
     }
@@ -88,6 +89,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
     void update(View v) {
         changeImot();
+
         try {
             @SuppressLint("StaticFieldLeak") JsonGetConnection jsonConnection = new JsonGetConnection(Constant.ARDUINO_URL){
                 @Override
@@ -95,9 +97,10 @@ public class UserHomeActivity extends AppCompatActivity {
                     try {
                         JSONObject temp = (JSONObject) jsonObject.getJSONArray("feeds").get(0);
                         currentWeight = Integer.parseInt(temp.getString("field1"));
-                        int tempFee = Integer.parseInt(getSharedPreferences("SESSION", MODE_PRIVATE).getString("fee", "0"));
-                        current_Fee = (Integer.parseInt(temp.getString("field1")) * tempFee * 0.001);
-                        fee.setText("무게 : " + temp.getString("field1") + "g  요금 : " + current_Fee +"원" );
+                        tempFee = Integer.parseInt(getSharedPreferences("SESSION", MODE_PRIVATE).getString("fee", "0"));
+                        currentFee = (Integer.parseInt(temp.getString("field1")) * tempFee * 0.001);
+                        double currentFee2 = Double.parseDouble(String.format("%.2f",currentFee));
+                        fee.setText("무게 : " + temp.getString("field1") + "g  요금 : " + currentFee2 +"원" );
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -122,7 +125,7 @@ public class UserHomeActivity extends AppCompatActivity {
                             JSONObject dayWeight = new JSONObject();
                             dayWeight.put("username", getSharedPreferences("SESSION", MODE_PRIVATE).getString("username", ""));
                             dayWeight.put("weight", currentWeight);
-                            dayWeight.put("fee", current_Fee);
+                            dayWeight.put("fee", currentFee);
 
                             @SuppressLint("StaticFieldLeak") JsonConnection jsonConnection = new JsonConnection(Constant.STATISTICS_ADD){
                                 @Override

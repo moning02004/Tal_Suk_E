@@ -103,6 +103,5 @@ public class MeActivity extends AppCompatActivity {
             }
         });
     }
-    void find(View v){
-    }
+
 }
