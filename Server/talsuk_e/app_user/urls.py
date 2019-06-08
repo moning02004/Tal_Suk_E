@@ -10,5 +10,7 @@ urlpatterns = [
     path('__check_/<str:pk>/', views.check),
     path('__leave_/', views.leave),
     path('__get_info_/', views.getInfo),
+    path('__get_all_/', views.get_user_all),
+    path('__reset_password_/', views.reset_password),
 ]
 

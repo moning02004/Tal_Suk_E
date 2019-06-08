@@ -22,7 +22,7 @@ class Day(models.Model):
     month = models.ForeignKey(Month, on_delete=models.CASCADE)
     num = models.PositiveIntegerField(default=1)
     weight = models.PositiveIntegerField(default=0)
-    fee = models.PositiveIntegerField(default=0)
+    fee = models.CharField(max_length=10, default='0')
 
     def __str__(self):
         return str(self.num)
